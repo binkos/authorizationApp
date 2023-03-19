@@ -1,24 +1,10 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id("applicationPlugin")
 }
 
 android {
-    namespace 'com.uldazislau_pravalenak.authorizationapp'
+    namespace = 'com.test.authorizationapp'
     compileSdk 33
-
-    defaultConfig {
-        applicationId "com.uldazislau_pravalenak.authorizationapp"
-        minSdk 24
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
-    }
 
     buildTypes {
         release {
@@ -35,9 +21,6 @@ android {
     }
     buildFeatures {
         compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.4.1'
     }
     packagingOptions {
         resources {

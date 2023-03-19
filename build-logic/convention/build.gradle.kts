@@ -15,11 +15,11 @@ gradlePlugin {
     plugins {
         register("androidApplication") {
             id = "applicationPlugin"
-            implementationClass = "NFCApplicationPlugin"
+            implementationClass = "ApplicationPlugin"
         }
         register("androidLibrary") {
             id = "libraryPlugin"
-            implementationClass = "NFCLibraryPlugin"
+            implementationClass = "LibraryPlugin"
         }
     }
 }
