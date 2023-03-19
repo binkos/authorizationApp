@@ -13,10 +13,6 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        register("androidApplication") {
-            id = "applicationPlugin"
-            implementationClass = "ApplicationPlugin"
-        }
         register("androidLibrary") {
             id = "libraryPlugin"
             implementationClass = "LibraryPlugin"

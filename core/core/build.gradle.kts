@@ -5,3 +5,7 @@ plugins {
 android {
     namespace = "com.test.authorizationapp.core"
 }
+
+testPlugin {
+    compose = false
+}
