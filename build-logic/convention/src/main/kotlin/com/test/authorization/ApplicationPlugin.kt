@@ -13,13 +13,14 @@ class ApplicationPlugin : Plugin<Project> {
         }
 
         target.extensions.configure<ApplicationExtension> {
-			buildFeatures {
-				compose = true
 
-				composeOptions {
-					kotlinCompilerExtensionVersion = target.libs.versions.composeCompiler.get()
-				}
-			}
+            buildFeatures {
+                compose = true
+
+                composeOptions {
+                    kotlinCompilerExtensionVersion = target.libs.versions.composeCompiler.get()
+                }
+            }
         }
     }
 }
