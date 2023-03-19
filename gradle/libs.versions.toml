@@ -1,5 +1,5 @@
 [versions]
-minSdk = "28"
+minSdk = "21"
 compileSdk = "33"
 
 coroutines = "1.6.4"
