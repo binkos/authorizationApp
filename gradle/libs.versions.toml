@@ -1,0 +1,36 @@
+[versions]
+minSdk = "28"
+compileSdk = "33"
+
+coroutines = "1.6.4"
+kotlin = "1.8.10"
+ktor = '2.2.3'
+serialization = '1.4.1'
+composeCompiler = "1.4.3"
+androidxComposeBom = "2023.01.00"
+
+gradleAndroidPlugin = "7.4.1"
+
+[libraries]
+androidx-appcompat = "androidx.appcompat:appcompat:1.6.0"
+
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidxComposeBom" }
+compose-material = { module = "androidx.compose.material:material" }
+compose-foundation = { module = "androidx.compose.foundation:foundation" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+
+coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+
+
+# Dependencies of the included build-logic
+gradle-plugin-buildtools = { module = "com.android.tools.build:gradle", version.ref = "gradleAndroidPlugin" }
+gradle-plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+[plugins]
+
+android-application = { id = "com.android.application", version.ref = "gradleAndroidPlugin" }
+android-library = { id = "com.android.library", version.ref = "gradleAndroidPlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+serialization-plugin = {id = "org.jetbrains.kotlin.plugin.serialization", version.ref= "kotlin" }
