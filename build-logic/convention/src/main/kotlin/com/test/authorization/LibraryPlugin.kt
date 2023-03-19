@@ -13,6 +13,8 @@ class LibraryPlugin : Plugin<Project> {
 		}
 		
 		extensions.configure<LibraryExtension> {
+			plugins.apply("kotlin-android")
+
 			defaultConfig {
 				minSdk = libs.versions.minSdk.get().toInt()
 				compileSdk = libs.versions.compileSdk.get().toInt()
@@ -21,7 +23,11 @@ class LibraryPlugin : Plugin<Project> {
 			}
 			
 			buildFeatures {
-				buildConfig = false
+				compose = true
+
+				composeOptions {
+					kotlinCompilerExtensionVersion = project.libs.versions.composeCompiler.get()
+				}
 			}
 		}
 	}
