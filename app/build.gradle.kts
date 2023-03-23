@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    namespace = "com.test.authorizationapp"
+    namespace = "com.uladzislau_pravalenak.authorizationapp"
 
     defaultConfig {
-        applicationId = "com.test.authorizationapp"
+        applicationId = "com.uladzislau_pravalenak.authorizationapp"
         minSdk = libs.versions.minSdk.get().toInt()
         compileSdk = libs.versions.compileSdk.get().toInt()
     }
@@ -35,6 +35,8 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.coreUi)
+
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     implementation("androidx.activity:activity-compose:1.3.1")

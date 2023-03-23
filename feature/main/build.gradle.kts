@@ -3,5 +3,5 @@ plugins {
 }
 
 android {
-    namespace = "com.test.authorizationapp.onboarding"
+    namespace = "com.uladzislau_pravalenak.authorizationapp.onboarding"
 }

@@ -1,4 +1,4 @@
-package com.test.authorization
+package com.uladzislau_pravalenak.authorization
 
 open class PluginExtension {
 

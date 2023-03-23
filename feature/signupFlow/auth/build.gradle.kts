@@ -3,5 +3,5 @@ plugins {
 }
 
 android {
-    namespace = "com.test.authorizationapp.signupFlow.auth"
+    namespace = "com.uladzislau_pravalenak.authorizationapp.signupFlow.auth"
 }
