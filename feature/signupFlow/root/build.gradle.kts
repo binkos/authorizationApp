@@ -8,6 +8,7 @@ android {
 
 dependencies {
     implementation(projects.core.coreNavigation)
+    implementation(projects.core.core)
 
     implementation(libs.androidx.navigation.compose)
 //    implementation(libs.androidx.navigation.compose.hilt)
