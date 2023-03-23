@@ -19,11 +19,12 @@ include(":app")
 
 include(":core:core")
 include(":core:core-ui")
+include(":core:core-navigation")
 
 include(":feature:main")
 include(":feature:onboarding")
 
-include(":feature:signupFlow:main")
+include(":feature:signupFlow:root")
 include(":feature:signupFlow:auth")
 include(":feature:signupFlow:signup")
 
