@@ -3,5 +3,5 @@ plugins {
 }
 
 android {
-    namespace = "com.test.authorizationapp.shared.auth"
+    namespace = "com.uladzislau_pravalenak.authorizationapp.shared.auth"
 }

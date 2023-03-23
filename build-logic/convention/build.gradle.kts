@@ -2,7 +2,7 @@ plugins{
     `kotlin-dsl`
 }
 
-group = "com.test.authorization"
+group = "com.uladzislau_pravalenak.authorization"
 
 dependencies {
     compileOnly(libs.gradle.plugin.kotlin)

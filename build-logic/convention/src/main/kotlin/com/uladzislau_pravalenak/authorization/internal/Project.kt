@@ -1,4 +1,4 @@
-package com.test.authorization.internal
+package com.uladzislau_pravalenak.authorization.internal
 
 import com.android.build.gradle.LibraryExtension
 import org.gradle.accessors.dm.LibrariesForLibs

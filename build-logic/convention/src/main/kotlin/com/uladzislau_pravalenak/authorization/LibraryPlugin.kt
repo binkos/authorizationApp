@@ -1,10 +1,9 @@
-import com.test.authorization.PluginExtension
-import com.test.authorization.internal.libraryExtensions
-import com.test.authorization.internal.libs
+import com.uladzislau_pravalenak.authorization.PluginExtension
+import com.uladzislau_pravalenak.authorization.internal.libraryExtensions
+import com.uladzislau_pravalenak.authorization.internal.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.create
-import org.gradle.kotlin.dsl.dependencies
 
 class LibraryPlugin : Plugin<Project> {
 

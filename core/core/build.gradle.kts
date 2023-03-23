@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.test.authorizationapp.core"
+    namespace = "com.uladzislau_pravalenak.authorizationapp.core"
 }
 
 testPlugin {
