@@ -9,6 +9,9 @@ serialization = '1.4.1'
 composeCompiler = "1.4.3"
 androidxComposeBom = "2023.01.00"
 
+navigationCompose = "2.5.2"
+navigationComposeHilt = "1.0.0"
+
 gradleAndroidPlugin = "7.4.1"
 
 [libraries]
@@ -23,6 +26,8 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-navigation-compose-hilt = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "navigationComposeHilt" }
 
 # Dependencies of the included build-logic
 gradle-plugin-buildtools = { module = "com.android.tools.build:gradle", version.ref = "gradleAndroidPlugin" }
