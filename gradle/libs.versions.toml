@@ -17,16 +17,17 @@ gradleAndroidPlugin = "7.4.1"
 [libraries]
 androidx-appcompat = "androidx.appcompat:appcompat:1.6.0"
 
-androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidxComposeBom" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidxComposeBom" }
 compose-material = { module = "androidx.compose.material:material" }
+compose-runtime = { module = "androidx.compose.runtime:runtime" }
 compose-foundation = { module = "androidx.compose.foundation:foundation" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
-androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-compose-hilt = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "navigationComposeHilt" }
 
 # Dependencies of the included build-logic
@@ -38,4 +39,4 @@ gradle-plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 android-application = { id = "com.android.application", version.ref = "gradleAndroidPlugin" }
 android-library = { id = "com.android.library", version.ref = "gradleAndroidPlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-serialization-plugin = {id = "org.jetbrains.kotlin.plugin.serialization", version.ref= "kotlin" }
+serialization-plugin = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

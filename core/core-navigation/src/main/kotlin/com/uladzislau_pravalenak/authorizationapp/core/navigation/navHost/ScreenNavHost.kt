@@ -1,4 +1,4 @@
-package com.uladzislau_pravalenak.core.navigation.navHost
+package com.uladzislau_pravalenak.authorizationapp.core.navigation.navHost
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -8,11 +8,11 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.uladzislau_pravalenak.core.navigation.navBuilder.DefaultNavBuilder
-import com.uladzislau_pravalenak.core.navigation.navBuilder.NavBuilder
-import com.uladzislau_pravalenak.core.navigation.navigator.DefaultNavigator
-import com.uladzislau_pravalenak.core.navigation.navigator.LocalNavigator
-import com.uladzislau_pravalenak.core.navigation.navigator.Navigator
+import com.uladzislau_pravalenak.authorizationapp.core.navigation.navBuilder.DefaultNavBuilder
+import com.uladzislau_pravalenak.authorizationapp.core.navigation.navBuilder.NavBuilder
+import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.DefaultNavigator
+import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.LocalNavigator
+import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.Navigator
 
 @Composable
 fun ScreenNavHost(

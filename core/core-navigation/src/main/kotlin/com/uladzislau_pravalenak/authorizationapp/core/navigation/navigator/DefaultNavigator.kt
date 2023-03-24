@@ -1,4 +1,4 @@
-package com.uladzislau_pravalenak.core.navigation.navigator
+package com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.navigation.NavController

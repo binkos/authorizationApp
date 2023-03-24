@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.test.authorizationapp.corenavigation"
+    namespace = "com.uladzislau_pravalenak.authorizationapp.corenavigation"
 }
 
 dependencies {
 
-    implementation(libs.androidx.navigation.compose)
+    implementation(libs.compose.navigation)
 //    implementation(libs.androidx.navigation.compose.hilt)
 }
