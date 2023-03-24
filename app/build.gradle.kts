@@ -36,6 +36,12 @@ android {
 
 dependencies {
     implementation(projects.core.coreUi)
+    implementation(projects.core.core)
+    implementation(projects.core.coreNavigation)
+    implementation(projects.feature.signUpFlow.root)
+    implementation(projects.feature.onboarding)
+
+    implementation(libs.compose.navigation)
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")

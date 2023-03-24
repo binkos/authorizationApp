@@ -1,4 +1,4 @@
-package com.uladzislau_pravalenak.core.navigation.navBuilder
+package com.uladzislau_pravalenak.authorizationapp.core.navigation.navBuilder
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
