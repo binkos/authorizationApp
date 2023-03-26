@@ -7,7 +7,8 @@ kotlin = "1.8.10"
 ktor = '2.2.3'
 serialization = '1.4.1'
 composeCompiler = "1.4.3"
-androidxComposeBom = "2023.01.00"
+androidxComposeBom = "2023.03.00"
+accompanist = "0.30.0"
 
 navigationCompose = "2.5.2"
 navigationComposeHilt = "1.0.0"
@@ -25,6 +26,8 @@ compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+
+compose-accompanist-pager = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist" }
 
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
