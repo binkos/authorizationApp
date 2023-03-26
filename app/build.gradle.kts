@@ -38,8 +38,10 @@ dependencies {
     implementation(projects.core.coreUi)
     implementation(projects.core.core)
     implementation(projects.core.coreNavigation)
+
     implementation(projects.feature.signUpFlow.root)
     implementation(projects.feature.onboarding)
+    implementation(projects.feature.signIn)
 
     implementation(libs.compose.navigation)
 
