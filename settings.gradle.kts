@@ -23,11 +23,12 @@ include(":core:core-navigation")
 
 include(":feature:main")
 include(":feature:onboarding")
+include(":feature:sign-in")
 
-include(":feature:signUpFlow:root")
-include(":feature:signUpFlow:enterData")
+include(":feature:sign-up-flow:root")
+include(":feature:sign-up-flow:enter-data")
 //include(":feature:signUpFlow:auth")
-include(":feature:signUpFlow:signup")
+include(":feature:sign-up-flow:signup")
 
 include(":shared:api")
 include(":shared:auth")

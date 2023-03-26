@@ -5,12 +5,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
@@ -50,6 +52,7 @@ fun OnboardingScreen() {
             PageInfo(R.drawable.icon_create_account, R.string.create_account_page_message),
             PageInfo(R.drawable.icon_fingerprint, R.string.set_pin_page_message),
             PageInfo(R.drawable.icon_send_invite, R.string.create_financial_page_message),
+            PageInfo(R.drawable.icon_paragliding, R.string.finish_onboarding_message),
         )
 
         mutableStateOf(pageInfos)
@@ -95,8 +98,8 @@ fun OnboardingScreen() {
                     pagerState.animateScrollToPage(pagerState.currentPage + 1)
                 }
             },
-            onStartButtonClicked = {
-                navigator.navigate(AppFlowRoutes.SIGN_UP_FLOW.name) {
+            onStartButtonClicked = { destination ->
+                navigator.navigate(destination) {
                     popUpTo(AppFlowRoutes.ONBOARDING.name) {
                         inclusive = true
                     }
@@ -114,7 +117,7 @@ private fun OnboardingCardPage(
     pageItems: List<PageInfo>,
     isStartButtonVisible: Boolean,
     onContinueButtonClicked: () -> Unit,
-    onStartButtonClicked: () -> Unit,
+    onStartButtonClicked: (String) -> Unit,
 ) {
     Column(
         modifier = modifier
@@ -137,22 +140,36 @@ private fun OnboardingCardPage(
         Spacer(modifier = Modifier.weight(1f))
 
         if (isStartButtonVisible) {
-            OnboardingButton(stringResource(R.string.start_app_flow), onStartButtonClicked)
+            Row(modifier = Modifier.fillMaxWidth()) {
+                val buttonModifier = Modifier.weight(1f)
+                OnboardingButton(
+                    buttonModifier,
+                    stringResource(R.string.move_to_sign_in)
+                ) { onStartButtonClicked(AppFlowRoutes.SIGN_IN.name) }
+                Spacer(modifier = Modifier.width(8.dp))
+                OnboardingButton(
+                    buttonModifier,
+                    stringResource(R.string.move_to_sign_up)
+                ) { onStartButtonClicked(AppFlowRoutes.SIGN_UP_FLOW.name) }
+            }
         } else {
-            OnboardingButton(stringResource(R.string.continue_onboarding), onContinueButtonClicked)
+            OnboardingButton(
+                modifier = Modifier.fillMaxWidth(),
+                text = stringResource(R.string.continue_onboarding),
+                onClick = onContinueButtonClicked
+            )
         }
     }
 }
 
 @Composable
 private fun OnboardingButton(
+    modifier: Modifier = Modifier,
     text: String,
     onClick: () -> Unit,
 ) {
     Button(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 16.dp, end = 16.dp, top = 8.dp),
+        modifier = modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp),
         onClick = onClick
     ) {
         Text(text = text)
