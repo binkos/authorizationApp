@@ -46,7 +46,6 @@ fun OnboardingScreen() {
     val coroutineScope = rememberCoroutineScope()
 
     val pageItems by remember {
-//        listOf<String>()
         val pageInfos = listOf(
             PageInfo(R.drawable.icon_create_account, R.string.create_account_page_message),
             PageInfo(R.drawable.icon_fingerprint, R.string.set_pin_page_message),
