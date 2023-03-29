@@ -8,8 +8,8 @@ import com.uladzislau_pravalenak.authorizationapp.signUpFlow.root.SignUpFlowNavH
 import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
 
 @Composable
-fun AppNavHost() {
-    ScreenNavHost(startDestination = AppFlowRoutes.ONBOARDING.name) {
+fun AppNavHost(destination: String) {
+    ScreenNavHost(startDestination = destination) {
         screen(AppFlowRoutes.ONBOARDING.name) { OnboardingScreen() }
         screen(AppFlowRoutes.SIGN_IN.name) { SignInScreen() }
         screen(AppFlowRoutes.SIGN_UP_FLOW.name) { SignUpFlowNavHost() }

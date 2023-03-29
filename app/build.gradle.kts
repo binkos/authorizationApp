@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -44,6 +46,11 @@ dependencies {
     implementation(projects.feature.signIn)
 
     implementation(libs.compose.navigation)
+    implementation(libs.androidx.splashscreen)
+    implementation(libs.androidx.datastore)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
