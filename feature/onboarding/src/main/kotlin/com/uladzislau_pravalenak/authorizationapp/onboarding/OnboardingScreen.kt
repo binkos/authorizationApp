@@ -21,6 +21,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,6 +35,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.LocalNavigator
@@ -44,6 +46,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen() {
+    val viewModel: OnboardingViewModel = hiltViewModel()
     val navigator = LocalNavigator.currentOrThrow
     val coroutineScope = rememberCoroutineScope()
 
@@ -61,6 +64,22 @@ fun OnboardingScreen() {
     val isStartButtonVisible by remember(pagerState.currentPage) {
         derivedStateOf { pagerState.currentPage == pageItems.lastIndex }
     }
+
+    LaunchedEffect(key1 = Unit) {
+        viewModel.events.collect { action ->
+            val destination = when (action) {
+                OnboardingAction.NavigateToSignIn -> AppFlowRoutes.SIGN_IN.name
+                OnboardingAction.NavigateToSignUp -> AppFlowRoutes.SIGN_UP_FLOW.name
+            }
+
+            navigator.navigate(destination) {
+                popUpTo(AppFlowRoutes.ONBOARDING.name) {
+                    inclusive = true
+                }
+            }
+        }
+    }
+
 
     Box(Modifier.fillMaxSize()) {
         HorizontalPager(
@@ -98,12 +117,8 @@ fun OnboardingScreen() {
                     pagerState.animateScrollToPage(pagerState.currentPage + 1)
                 }
             },
-            onStartButtonClicked = { destination ->
-                navigator.navigate(destination) {
-                    popUpTo(AppFlowRoutes.ONBOARDING.name) {
-                        inclusive = true
-                    }
-                }
+            onStartButtonClicked = { event ->
+                viewModel.sendEvent(event)
             }
         )
     }
@@ -117,7 +132,7 @@ private fun OnboardingCardPage(
     pageItems: List<PageInfo>,
     isStartButtonVisible: Boolean,
     onContinueButtonClicked: () -> Unit,
-    onStartButtonClicked: (String) -> Unit,
+    onStartButtonClicked: (OnboardingEvent) -> Unit,
 ) {
     Column(
         modifier = modifier
@@ -145,12 +160,12 @@ private fun OnboardingCardPage(
                 OnboardingButton(
                     buttonModifier,
                     stringResource(R.string.move_to_sign_in)
-                ) { onStartButtonClicked(AppFlowRoutes.SIGN_IN.name) }
+                ) { onStartButtonClicked(OnboardingEvent.OnSignInClicked) }
                 Spacer(modifier = Modifier.width(8.dp))
                 OnboardingButton(
                     buttonModifier,
                     stringResource(R.string.move_to_sign_up)
-                ) { onStartButtonClicked(AppFlowRoutes.SIGN_UP_FLOW.name) }
+                ) { onStartButtonClicked(OnboardingEvent.OnSignUpClicked) }
             }
         } else {
             OnboardingButton(

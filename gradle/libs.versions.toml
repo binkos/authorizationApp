@@ -15,8 +15,13 @@ navigationComposeHilt = "1.0.0"
 
 gradleAndroidPlugin = "7.4.1"
 
+hilt = "2.45"
+
 [libraries]
 androidx-appcompat = "androidx.appcompat:appcompat:1.6.0"
+androidx-splashscreen = "androidx.core:core-splashscreen:1.0.0"
+androidx-datastore = "androidx.datastore:datastore-preferences:1.0.0"
+androidx-navigation-compose-hilt = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "navigationComposeHilt" }
 
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidxComposeBom" }
 compose-material = { module = "androidx.compose.material:material" }
@@ -31,7 +36,8 @@ compose-accompanist-pager = { module = "com.google.accompanist:accompanist-pager
 
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
-androidx-navigation-compose-hilt = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "navigationComposeHilt" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 
 # Dependencies of the included build-logic
 gradle-plugin-buildtools = { module = "com.android.tools.build:gradle", version.ref = "gradleAndroidPlugin" }
@@ -43,3 +49,4 @@ android-application = { id = "com.android.application", version.ref = "gradleAnd
 android-library = { id = "com.android.library", version.ref = "gradleAndroidPlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 serialization-plugin = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

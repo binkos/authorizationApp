@@ -1,5 +1,7 @@
 plugins {
     id("libraryPlugin")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -13,9 +15,8 @@ testPlugin {
 dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.runtime)
-}
+    implementation(libs.androidx.datastore)
 
-dependencies {
-    implementation(platform(libs.compose.bom))
-    implementation(libs.compose.runtime)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 }
