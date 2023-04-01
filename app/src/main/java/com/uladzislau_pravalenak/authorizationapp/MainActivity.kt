@@ -18,7 +18,7 @@ import androidx.core.view.WindowCompat
 import com.uladzislau_pravalenak.authorizationapp.navhost.AppNavHost
 import com.uladzislau_pravalenak.authorizationapp.presentation.SplashScreenViewModel
 import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
-import com.uldazislau_pravalenak.authorizationapp.ui.theme.AuthorizationAppTheme
+import com.uladzislau_pravalenak.authorization.core.ui.theme.AuthorizationAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
