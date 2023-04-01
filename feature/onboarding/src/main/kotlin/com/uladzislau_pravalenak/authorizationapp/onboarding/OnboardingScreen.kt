@@ -139,7 +139,6 @@ private fun OnboardingCardPage(
             .fillMaxWidth()
             .fillMaxHeight(0.33f)
             .clip(RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp))
-            .background(MaterialTheme.colors.surface)
             .padding(horizontal = 16.dp, vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -152,7 +151,7 @@ private fun OnboardingCardPage(
             textAlign = TextAlign.Center
         )
 
-        Spacer(modifier = Modifier.weight(1f))
+//        Spacer(modifier = Modifier.weight(1f))
 
         if (isStartButtonVisible) {
             Row(modifier = Modifier.fillMaxWidth()) {

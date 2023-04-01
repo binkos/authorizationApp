@@ -1,30 +1,33 @@
-package com.uldazislau_pravalenak.authorizationapp.ui.theme
+package com.uladzislau_pravalenak.authorization.core.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-
-private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
-)
+import androidx.compose.ui.graphics.Color
+import com.uldazislau_pravalenak.authorizationapp.ui.theme.Shapes
+import com.uldazislau_pravalenak.authorizationapp.ui.theme.Typography
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
+    primary = AppColor.Light.SeaSerpent,
+    primaryVariant = AppColor.Light.SeaSerpent,
     onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    background = Color.White,
+    secondary = AppColor.Light.CarminePink,
+    secondaryVariant = AppColor.Light.Gainsboro,
+    onSurface = AppColor.Light.Daintree,
+    error = AppColor.Light.Error
+)
+
+private val DarkColorPalette = darkColors(
+    primary = AppColor.Light.SeaSerpent,
+    primaryVariant = AppColor.Light.SeaSerpent,
+    onPrimary = Color.Black,
+    secondary = AppColor.Light.CarminePink,
+    secondaryVariant = AppColor.Light.Gainsboro,
+    onSurface = Color.White,
+    error = CustomColor.Error
 )
 
 @Composable

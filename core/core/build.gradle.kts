@@ -4,12 +4,21 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-android {
-    namespace = "com.uladzislau_pravalenak.authorizationapp.core"
-}
-
 testPlugin {
     compose = false
+    buildConfigGeneration = true
+}
+
+android {
+    namespace = "com.uladzislau_pravalenak.authorizationapp.core"
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    defaultConfig {
+        buildConfigField("String", "baseUrl", "\"baseurl\"")
+    }
 }
 
 dependencies {
@@ -19,4 +28,10 @@ dependencies {
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    implementation(libs.ktor.core)
+    implementation(libs.ktor.okhttp)
+    implementation(libs.ktor.logging)
+    implementation(libs.ktor.negotiation)
+    implementation(libs.ktor.serialization.json)
 }
