@@ -15,10 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import com.uladzislau_pravalenak.authorization.core.ui.theme.AuthorizationAppTheme
 import com.uladzislau_pravalenak.authorizationapp.navhost.AppNavHost
 import com.uladzislau_pravalenak.authorizationapp.presentation.SplashScreenViewModel
-import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
-import com.uladzislau_pravalenak.authorization.core.ui.theme.AuthorizationAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,16 +47,15 @@ class MainActivity : ComponentActivity() {
             // Run your animation.
             slideUp.start()
         }
-        splashScreen.setKeepOnScreenCondition { viewModel.state.value.isEmpty() }
+        splashScreen.setKeepOnScreenCondition { viewModel.state.value.isOpen }
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
-            val destination by viewModel.state.collectAsState()
-            val startDestination = destination.ifEmpty { AppFlowRoutes.ONBOARDING.name }
+            val state by viewModel.state.collectAsState()
 
             AuthorizationAppTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    AppNavHost(startDestination)
+                    AppNavHost(state.destination)
                 }
             }
         }

@@ -2,8 +2,8 @@ package com.uladzislau_pravalenak.authorizationapp.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.uladzislau_pravalenak.authorizationapp.onboarding.data.OnboardingRepository
-import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
+import com.uladzislau_pravalenak.authorizationapp.onboarding.data.StartDestinationRepository
+import com.uladzislau_pravalenak.authorizationapp.presentation.model.SplashScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,21 +15,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashScreenViewModel @Inject constructor(
-    repository: OnboardingRepository
+    repository: StartDestinationRepository
 ) : ViewModel() {
 
-
     init {
-        repository.isOnboardingPassed
-            .map { isPassed ->
-                if (isPassed) AppFlowRoutes.SIGN_IN.name
-                else AppFlowRoutes.ONBOARDING.name
-            }
+        repository
+            .startDestination
+            .map { destination -> SplashScreenState(false, destination) }
             .flowOn(Dispatchers.Default)
-            .onEach { destination -> state.value = destination }
+            .onEach { newState -> state.value = newState }
             .launchIn(viewModelScope)
-
     }
 
-    val state: MutableStateFlow<String> = MutableStateFlow("")
+    val state: MutableStateFlow<SplashScreenState> = MutableStateFlow(SplashScreenState())
 }

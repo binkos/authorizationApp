@@ -1,7 +1,7 @@
 package com.uladzislau_pravalenak.authorizationapp.onboarding.di
 
-import com.uladzislau_pravalenak.authorizationapp.onboarding.data.OnboardingRepository
-import com.uladzislau_pravalenak.authorizationapp.onboarding.data.OnboardingRepositoryImpl
+import com.uladzislau_pravalenak.authorizationapp.onboarding.data.StartDestinationRepository
+import com.uladzislau_pravalenak.authorizationapp.onboarding.data.StartDestinationRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,5 +15,5 @@ internal interface OboardingModule {
 
     @Binds
     @ViewModelScoped
-    fun bindsOnboardingRepository(impl: OnboardingRepositoryImpl): OnboardingRepository
+    fun bindsStartDestinationRepository(impl: StartDestinationRepositoryImpl): StartDestinationRepository
 }

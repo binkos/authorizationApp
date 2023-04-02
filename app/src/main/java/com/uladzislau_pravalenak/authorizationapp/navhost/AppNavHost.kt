@@ -10,6 +10,7 @@ import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
 @Composable
 fun AppNavHost(destination: String) {
     ScreenNavHost(startDestination = destination) {
+        screen(AppFlowRoutes.SPLASH.name) {  }
         screen(AppFlowRoutes.ONBOARDING.name) { OnboardingScreen() }
         screen(AppFlowRoutes.SIGN_IN.name) { SignInScreen() }
         screen(AppFlowRoutes.SIGN_UP_FLOW.name) { SignUpFlowNavHost() }

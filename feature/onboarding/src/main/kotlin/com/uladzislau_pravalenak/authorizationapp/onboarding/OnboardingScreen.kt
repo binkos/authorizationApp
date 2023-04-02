@@ -18,7 +18,6 @@ import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -66,7 +65,7 @@ fun OnboardingScreen() {
     }
 
     LaunchedEffect(key1 = Unit) {
-        viewModel.events.collect { action ->
+        viewModel.actions.collect { action ->
             val destination = when (action) {
                 OnboardingAction.NavigateToSignIn -> AppFlowRoutes.SIGN_IN.name
                 OnboardingAction.NavigateToSignUp -> AppFlowRoutes.SIGN_UP_FLOW.name
