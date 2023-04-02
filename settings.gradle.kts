@@ -24,6 +24,7 @@ include(":core:core-navigation")
 include(":feature:main")
 include(":feature:onboarding")
 include(":feature:sign-in")
+include(":feature:splash")
 
 include(":feature:sign-up-flow:root")
 include(":feature:sign-up-flow:enter-data")
@@ -32,3 +33,4 @@ include(":feature:sign-up-flow:signup")
 
 include(":shared:api")
 include(":shared:auth")
+include(":shared:start-destination")

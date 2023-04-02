@@ -1,4 +1,4 @@
-package com.uladzislau_pravalenak.authorizationapp.presentation.model
+package com.uladzislau_pravalenak.authorizationapp.splash.presentation.model
 
 import androidx.compose.runtime.Immutable
 import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes

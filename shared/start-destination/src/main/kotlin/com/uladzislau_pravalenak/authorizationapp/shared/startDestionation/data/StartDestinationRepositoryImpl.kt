@@ -1,8 +1,9 @@
-package com.uladzislau_pravalenak.authorizationapp.onboarding.data
+package com.uladzislau_pravalenak.authorizationapp.shared.startDestionation.data
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import com.uladzislau_pravalenak.authorizationapp.shared.startDestionation.domain.StartDestinationRepository
 import com.uladzislau_pravalenk.authorizationapp.core.data.dataStore.AppConfigDataStorePreferencesKey
 import com.uladzislau_pravalenk.authorizationapp.core.di.AppConfigDataStore
 import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes

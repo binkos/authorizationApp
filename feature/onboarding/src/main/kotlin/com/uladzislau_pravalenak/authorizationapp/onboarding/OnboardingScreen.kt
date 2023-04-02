@@ -18,6 +18,7 @@ import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -48,6 +49,7 @@ fun OnboardingScreen() {
     val viewModel: OnboardingViewModel = hiltViewModel()
     val navigator = LocalNavigator.currentOrThrow
     val coroutineScope = rememberCoroutineScope()
+    val pagerState = rememberPagerState()
 
     val pageItems by remember {
         val pageInfos = listOf(
@@ -58,10 +60,6 @@ fun OnboardingScreen() {
         )
 
         mutableStateOf(pageInfos)
-    }
-    val pagerState = rememberPagerState()
-    val isStartButtonVisible by remember(pagerState.currentPage) {
-        derivedStateOf { pagerState.currentPage == pageItems.lastIndex }
     }
 
     LaunchedEffect(key1 = Unit) {
@@ -79,21 +77,42 @@ fun OnboardingScreen() {
         }
     }
 
+    OnboardingScreenUI(
+        pagerState = pagerState,
+        items = pageItems,
+        onContinueButtonClicked = {
+            coroutineScope.launch {
+                pagerState.animateScrollToPage(pagerState.currentPage + 1)
+            }
+        },
+        onStartButtonClicked = { viewModel.sendEvent(event = it) }
+    )
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun OnboardingScreenUI(
+    pagerState: PagerState,
+    items: List<PageInfo>,
+    onContinueButtonClicked: () -> Unit,
+    onStartButtonClicked: (OnboardingEvent) -> Unit
+) {
+    val isStartButtonVisible by remember(pagerState.currentPage) {
+        derivedStateOf { pagerState.currentPage == items.lastIndex }
+    }
 
     Box(Modifier.fillMaxSize()) {
         HorizontalPager(
             modifier = Modifier.fillMaxSize(),
             state = pagerState,
-            pageCount = pageItems.size
+            pageCount = items.size
         ) {
             Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Magenta),
+                modifier = Modifier.fillMaxSize(),
             ) {
                 Spacer(modifier = Modifier.weight(1f))
 
-                val drawableRes = pageItems[it].iconDrawableRes
+                val drawableRes = items[it].iconDrawableRes
                 Image(
                     modifier = Modifier
                         .size(64.dp)
@@ -109,16 +128,10 @@ fun OnboardingScreen() {
         OnboardingCardPage(
             modifier = Modifier.align(Alignment.BottomCenter),
             pagerState = pagerState,
-            pageItems = pageItems,
+            pageItems = items,
             isStartButtonVisible = isStartButtonVisible,
-            onContinueButtonClicked = {
-                coroutineScope.launch {
-                    pagerState.animateScrollToPage(pagerState.currentPage + 1)
-                }
-            },
-            onStartButtonClicked = { event ->
-                viewModel.sendEvent(event)
-            }
+            onContinueButtonClicked = onContinueButtonClicked,
+            onStartButtonClicked = onStartButtonClicked
         )
     }
 }
@@ -144,25 +157,22 @@ private fun OnboardingCardPage(
         HorizontalPagerIndicator(pagerState = pagerState, pageCount = pageItems.size)
 
         Text(
-            modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp, top = 16.dp),
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
             text = stringResource(id = pageItems[pagerState.currentPage].textStringRes),
             textAlign = TextAlign.Center
         )
 
-//        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.weight(1f))
 
         if (isStartButtonVisible) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 val buttonModifier = Modifier.weight(1f)
                 OnboardingButton(
-                    buttonModifier,
-                    stringResource(R.string.move_to_sign_in)
+                    buttonModifier, stringResource(R.string.move_to_sign_in)
                 ) { onStartButtonClicked(OnboardingEvent.OnSignInClicked) }
                 Spacer(modifier = Modifier.width(8.dp))
                 OnboardingButton(
-                    buttonModifier,
-                    stringResource(R.string.move_to_sign_up)
+                    buttonModifier, stringResource(R.string.move_to_sign_up)
                 ) { onStartButtonClicked(OnboardingEvent.OnSignUpClicked) }
             }
         } else {

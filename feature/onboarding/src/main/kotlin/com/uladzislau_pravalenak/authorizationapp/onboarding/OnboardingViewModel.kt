@@ -2,7 +2,7 @@ package com.uladzislau_pravalenak.authorizationapp.onboarding
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.uladzislau_pravalenak.authorizationapp.onboarding.data.StartDestinationRepository
+import com.uladzislau_pravalenak.authorizationapp.shared.startDestionation.domain.StartDestinationRepository
 import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

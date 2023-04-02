@@ -1,4 +1,4 @@
-package com.uldazislau_pravalenak.authorizationapp.ui.theme
+package com.uladzislau_pravalenak.authorization.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

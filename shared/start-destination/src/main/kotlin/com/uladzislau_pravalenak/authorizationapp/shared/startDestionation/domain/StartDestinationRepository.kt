@@ -1,4 +1,4 @@
-package com.uladzislau_pravalenak.authorizationapp.onboarding.data
+package com.uladzislau_pravalenak.authorizationapp.shared.startDestionation.domain
 
 import kotlinx.coroutines.flow.Flow
 
