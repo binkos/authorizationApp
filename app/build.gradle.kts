@@ -44,6 +44,9 @@ dependencies {
     implementation(projects.feature.signUpFlow.root)
     implementation(projects.feature.onboarding)
     implementation(projects.feature.signIn)
+    implementation(projects.feature.splash)
+
+    implementation(projects.shared.startDestination)
 
     implementation(libs.compose.navigation)
     implementation(libs.androidx.splashscreen)
