@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
             // Run your animation.
             slideUp.start()
         }
-//        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
 

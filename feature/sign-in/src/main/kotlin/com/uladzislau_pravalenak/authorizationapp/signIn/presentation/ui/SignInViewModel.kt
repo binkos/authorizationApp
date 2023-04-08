@@ -26,7 +26,8 @@ class SignInViewModel @Inject constructor(
         when (event) {
             is SignInEvent.EmailChanged -> {
                 val isEnabled =
-                    profileValidator.validateEmail(event.value) && state.value.password.isNotEmpty()
+                    profileValidator.validateEmail(event.value) &&
+                            profileValidator.validatePassword(state.value.password)
 
                 state.value = state.value.copy(
                     email = event.value,
@@ -40,7 +41,8 @@ class SignInViewModel @Inject constructor(
             }
             is SignInEvent.PasswordChanged -> {
                 val isEnabled =
-                    profileValidator.validateEmail(event.value) && state.value.password.isNotEmpty()
+                    profileValidator.validateEmail(state.value.email) &&
+                            profileValidator.validatePassword(event.value)
 
                 state.value = state.value.copy(
                     password = event.value,
