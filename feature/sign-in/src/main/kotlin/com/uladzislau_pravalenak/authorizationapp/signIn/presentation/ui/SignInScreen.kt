@@ -1,10 +1,6 @@
 package com.uladzislau_pravalenak.authorizationapp.signIn.presentation.ui
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -67,6 +63,7 @@ private fun SignInScreenUI(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .imePadding()
             .padding(horizontal = 16.dp)
     ) {
         Spacer(modifier = Modifier.weight(1f))
@@ -95,18 +92,19 @@ private fun SignInScreenUI(
 
         Button(
             modifier = Modifier.fillMaxWidth(),
+            enabled = state.isSignInButtonEnabled,
             onClick = { onEvent(SignInEvent.SignInButtonClicked) }
         ) {
             Text(text = "Sign In")
         }
 
-        Spacer(modifier = Modifier.weight(2f))
+        Spacer(modifier = Modifier.weight(1.5f))
     }
 }
 
 
 @Composable
-@Preview()
+@Preview
 fun SignInPreview() {
     AuthorizationAppTheme {
         Surface {

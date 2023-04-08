@@ -30,7 +30,7 @@ fun PasswordInputField(
         errorText = error,
         keyboardOptions = KeyboardOptions(
             imeAction = imeAction,
-            keyboardType = KeyboardType.Email
+            keyboardType = KeyboardType.Password
         ),
         keyboardActions = KeyboardActions(
             onDone = onDone,

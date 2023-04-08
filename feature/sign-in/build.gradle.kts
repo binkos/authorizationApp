@@ -25,4 +25,6 @@ dependencies {
     implementation(libs.androidx.navigation.compose.hilt)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    implementation(libs.androidx.datastore)
 }
