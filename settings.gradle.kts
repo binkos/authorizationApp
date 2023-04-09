@@ -26,11 +26,7 @@ include(":feature:onboarding")
 include(":feature:sign-in")
 include(":feature:splash")
 
-include(":feature:sign-up-flow:root")
-include(":feature:sign-up-flow:enter-data")
-//include(":feature:signUpFlow:auth")
-include(":feature:sign-up-flow:signup")
-
+include(":feature:sign-up")
 include(":shared:api")
 include(":shared:auth")
 include(":shared:start-destination")

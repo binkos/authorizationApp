@@ -4,6 +4,6 @@ enum class AppFlowRoutes {
     SPLASH,
     ONBOARDING,
     SIGN_IN,
-    SIGN_UP_FLOW,
+    SIGN_UP,
     MAIN_FLOW,
 }

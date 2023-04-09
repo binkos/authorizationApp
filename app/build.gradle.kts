@@ -41,7 +41,7 @@ dependencies {
     implementation(projects.core.core)
     implementation(projects.core.coreNavigation)
 
-    implementation(projects.feature.signUpFlow.root)
+    implementation(projects.feature.signUp)
     implementation(projects.feature.onboarding)
     implementation(projects.feature.signIn)
     implementation(projects.feature.splash)

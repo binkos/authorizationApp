@@ -59,6 +59,11 @@ class SignInViewModel @Inject constructor(
                         ?: actions.emit(SignInAction.ShowErrorDialog)
                 }
             }
+            SignInEvent.SignUpButtonClicked -> {
+                viewModelScope.launch {
+                    actions.emit(SignInAction.NavigateToSignUpFlow)
+                }
+            }
         }
     }
 }
