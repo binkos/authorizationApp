@@ -6,4 +6,5 @@ sealed class SignInEvent private constructor() {
     data class PasswordChanged(val value: String) : SignInEvent()
     object ForgotPasswordClicked : SignInEvent()
     object SignInButtonClicked : SignInEvent()
+    object SignUpButtonClicked : SignInEvent()
 }

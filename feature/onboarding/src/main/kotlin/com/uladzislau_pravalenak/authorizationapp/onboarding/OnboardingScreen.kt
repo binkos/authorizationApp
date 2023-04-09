@@ -66,7 +66,7 @@ fun OnboardingScreen() {
         viewModel.actions.collect { action ->
             val destination = when (action) {
                 OnboardingAction.NavigateToSignIn -> AppFlowRoutes.SIGN_IN.name
-                OnboardingAction.NavigateToSignUp -> AppFlowRoutes.SIGN_UP_FLOW.name
+                OnboardingAction.NavigateToSignUp -> "${AppFlowRoutes.SIGN_UP.name}/false"
             }
 
             navigator.navigate(destination) {
