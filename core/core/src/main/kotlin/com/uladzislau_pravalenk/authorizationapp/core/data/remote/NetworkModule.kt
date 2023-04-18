@@ -42,6 +42,7 @@ internal object NetworkModule {
                 url {
                     protocol = URLProtocol.HTTP
                     host = BuildConfig.baseUrl
+                    contentType(ContentType.Application.Json)
                 }
             }
             install(Logging) {
