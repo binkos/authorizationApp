@@ -16,7 +16,6 @@ import javax.inject.Inject
 @HiltViewModel
 class SignInViewModel @Inject constructor(
     private val repository: SignInRepository,
-    private val profileValidator: ProfileValidator
 ) : ViewModel() {
 
     val state: MutableStateFlow<SignInState> = MutableStateFlow(SignInState())
@@ -25,9 +24,7 @@ class SignInViewModel @Inject constructor(
     fun sendEvents(event: SignInEvent) {
         when (event) {
             is SignInEvent.EmailChanged -> {
-                val isEnabled =
-                    profileValidator.validateEmail(event.value) &&
-                            profileValidator.validatePassword(state.value.password)
+                val isEnabled = event.value.isNotEmpty() && state.value.password.isNotEmpty()
 
                 state.value = state.value.copy(
                     email = event.value,
@@ -40,9 +37,7 @@ class SignInViewModel @Inject constructor(
                 }
             }
             is SignInEvent.PasswordChanged -> {
-                val isEnabled =
-                    profileValidator.validateEmail(state.value.email) &&
-                            profileValidator.validatePassword(event.value)
+                val isEnabled = state.value.email.isNotEmpty() && state.value.password.isNotEmpty()
 
                 state.value = state.value.copy(
                     password = event.value,
