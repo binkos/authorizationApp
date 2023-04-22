@@ -1,32 +1,10 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    id("android-app-setup")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
 }
 
 android {
-    namespace = "com.uladzislau_pravalenak.authorizationapp"
-
-    defaultConfig {
-        applicationId = "com.uladzislau_pravalenak.authorizationapp"
-        minSdk = libs.versions.minSdk.get().toInt()
-        compileSdk = libs.versions.compileSdk.get().toInt()
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                "proguard-rules.pro",
-                getDefaultProguardFile("proguard-android-optimize.txt")
-            )
-        }
-        debug {
-            isMinifyEnabled = false
-        }
-    }
-
     buildFeatures {
         compose = true
 
@@ -34,13 +12,6 @@ android {
             kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
         }
     }
-
-    project.tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>()
-        .configureEach {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
 }
 
 dependencies {
@@ -67,9 +38,6 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.material)
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 }

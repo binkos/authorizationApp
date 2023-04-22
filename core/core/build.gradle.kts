@@ -1,12 +1,7 @@
 plugins {
-    id("libraryPlugin")
+    id("android-compose-setup")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-}
-
-testPlugin {
-    compose = false
-    buildConfigGeneration = true
 }
 
 android {

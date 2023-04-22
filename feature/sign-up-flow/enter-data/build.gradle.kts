@@ -1,5 +1,5 @@
 plugins{
-    id("libraryPlugin")
+    id("android-compose-setup")
 }
 
 android {

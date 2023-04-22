@@ -2,20 +2,18 @@ plugins{
     `kotlin-dsl`
 }
 
-group = "com.uladzislau_pravalenak.authorization"
-
 dependencies {
-    compileOnly(libs.gradle.plugin.kotlin)
-    compileOnly(libs.gradle.plugin.buildtools)
+    implementation(libs.gradle.plugin.kotlin)
+    implementation(libs.gradle.plugin.buildtools)
 
-    compileOnly(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 }
 
-gradlePlugin {
-    plugins {
-        register("androidLibrary") {
-            id = "libraryPlugin"
-            implementationClass = "LibraryPlugin"
-        }
-    }
-}
+//gradlePlugin {
+//    plugins {
+//        register("androidLibrary") {
+//            id = "libraryPlugin"
+//            implementationClass = "LibraryPlugin"
+//        }
+//    }
+//}
