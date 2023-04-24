@@ -28,28 +28,16 @@ import com.uladzislau_pravalenk.authorizationapp.core.extensions.currentOrThrow
 import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
 
 @Composable
-fun SignUpScreen(navigateBack: Boolean = false) {
+fun SignUpScreen(
+    onSignedUp: () -> Unit,
+) {
     val viewModel: SignUpViewModel = hiltViewModel()
     val state by viewModel.state.collectAsState()
-    val navigator = LocalNavigator.currentOrThrow
-    val dispatcherOwner = LocalOnBackPressedDispatcherOwner.current
-
-    BackHandler {
-        if (navigateBack) {
-            navigator.popBackStack()
-        } else {
-            navigator.navigate(AppFlowRoutes.SIGN_IN.name) {
-                popUpTo("${AppFlowRoutes.SIGN_UP.name}/{navigateBack}") { inclusive = true }
-            }
-        }
-    }
 
     LaunchedEffect(key1 = Unit) {
         viewModel.actions.collect { action ->
             when (action) {
-                is SignUpAction.NavigateToSignIn -> {
-                    dispatcherOwner?.onBackPressedDispatcher?.onBackPressed()
-                }
+                is SignUpAction.NavigateToSignIn -> onSignedUp()
                 is SignUpAction.ShowErrorDialog -> {}
             }
         }

@@ -1,4 +1,4 @@
-package com.uladzislau_pravalenak.authorizationapp.signUp.domain.validator
+package com.pracel.authorizationApp.shared.profile.validator.api
 
 interface ProfileValidator {
 

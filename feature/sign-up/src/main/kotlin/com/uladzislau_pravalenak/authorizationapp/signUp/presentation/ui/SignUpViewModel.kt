@@ -2,8 +2,8 @@ package com.uladzislau_pravalenak.authorizationapp.signUp.presentation.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pracel.authorizationApp.shared.profile.validator.api.ProfileValidator
 import com.uladzislau_pravalenak.authorizationapp.signUp.domain.repository.SignUpRepository
-import com.uladzislau_pravalenak.authorizationapp.signUp.domain.validator.ProfileValidator
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpAction
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpEvent
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpState

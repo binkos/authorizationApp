@@ -41,7 +41,7 @@ fun SignInScreen() {
                     }
                 }
                 is SignInAction.NavigateToSignUpFlow -> {
-                    navigator.navigate("${AppFlowRoutes.SIGN_UP.name}/true")
+                    navigator.navigate(AppFlowRoutes.SIGN_UP.name)
                 }
                 is SignInAction.ShowErrorDialog -> {
                 }

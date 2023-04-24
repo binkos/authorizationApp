@@ -5,13 +5,14 @@ plugins {
 }
 
 android {
-    namespace = "com.uladzislau_pravalenak.authorizationapp.signIn"
+    namespace = "com.uladzislau_pravalenak.authorizationapp.signUp"
 }
 
 dependencies {
     implementation(projects.core.core)
     implementation(projects.core.coreUi)
     implementation(projects.core.coreNavigation)
+    implementation(projects.shared.profile)
 
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.foundation)
