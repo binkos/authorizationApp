@@ -4,6 +4,14 @@ plugins {
 
 android {
     namespace = "com.uladzislau_pravalenak.authorizationapp.coreui"
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
+    }
 }
 
 dependencies {

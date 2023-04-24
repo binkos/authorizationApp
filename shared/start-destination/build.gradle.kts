@@ -1,7 +1,6 @@
 plugins {
     id("android-compose-setup")
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    id("android-hilt-setup")
 }
 
 android {
@@ -25,6 +24,4 @@ dependencies {
     implementation(libs.ktor.okhttp)
 
     implementation(libs.androidx.navigation.compose.hilt)
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
 }

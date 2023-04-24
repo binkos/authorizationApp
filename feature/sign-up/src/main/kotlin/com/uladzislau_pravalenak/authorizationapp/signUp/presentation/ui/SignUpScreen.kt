@@ -1,7 +1,5 @@
 package com.uladzislau_pravalenak.authorizationapp.signUp.presentation.ui
 
-import androidx.activity.compose.BackHandler
-import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Surface
@@ -20,12 +18,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.uladzislau_pravalenak.authorization.core.ui.input.EmailInputField
 import com.uladzislau_pravalenak.authorization.core.ui.input.PasswordInputField
 import com.uladzislau_pravalenak.authorization.core.ui.theme.AuthorizationAppTheme
-import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.LocalNavigator
+import com.uladzislau_pravalenak.authorizationapp.signUp.data.dto.SignUpResponse
+import com.uladzislau_pravalenak.authorizationapp.signUp.domain.repository.SignUpRepository
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpAction
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpEvent
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpState
 import com.uladzislau_pravalenk.authorizationapp.core.extensions.currentOrThrow
-import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
 
 @Composable
 fun SignUpScreen(
