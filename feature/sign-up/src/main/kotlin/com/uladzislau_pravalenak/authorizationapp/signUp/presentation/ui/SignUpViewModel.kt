@@ -3,7 +3,7 @@ package com.uladzislau_pravalenak.authorizationapp.signUp.presentation.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pracel.authorizationApp.kmm.profile.api.ProfileValidator
-import com.pracel.authorizationApp.kmm.profile.impl.DefaultProfileValidator
+import com.pracel.authorizationApp.kmm.profile.provider.ProfileValidator
 import com.uladzislau_pravalenak.authorizationapp.signUp.domain.repository.SignUpRepository
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpAction
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpEvent
@@ -19,7 +19,7 @@ class SignUpViewModel @Inject constructor(
     private val repository: SignUpRepository,
 ) : ViewModel() {
 
-    private val profileValidator: ProfileValidator = DefaultProfileValidator()
+    private val profileValidator: ProfileValidator = ProfileValidator()
 
     val state: MutableStateFlow<SignUpState> = MutableStateFlow(SignUpState())
     val actions: MutableSharedFlow<SignUpAction> = MutableSharedFlow()

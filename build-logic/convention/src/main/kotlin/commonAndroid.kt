@@ -1,5 +1,6 @@
 import com.android.build.gradle.BaseExtension
 import com.uladzislau_pravalenak.authorization.internal.libs
+import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -26,6 +27,10 @@ private fun BaseExtension.configureDefaultConfig(target: Project) {
             resources.excludes += "META-INF/DEPENDENCIES"
         }
 
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_17
+            targetCompatibility = JavaVersion.VERSION_17
+        }
 //        testOptions {
 //            unitTests {
 //                isIncludeAndroidResources = true
@@ -58,8 +63,6 @@ private fun Project.suppressOptIn() {
     tasks.withType<KotlinCompile>()
         .configureEach {
             kotlinOptions {
-                jvmTarget = "1.8"
-
                 freeCompilerArgs = freeCompilerArgs + listOf(
                     "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi",
                     "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
