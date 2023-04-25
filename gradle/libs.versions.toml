@@ -5,10 +5,10 @@ minSdk = "21"
 compileSdk = "33"
 
 coroutines = "1.6.4"
-kotlin = "1.8.10"
+kotlin = "1.8.20"
 ktor = '2.2.4'
 serialization = '1.5.0'
-composeCompiler = "1.4.3"
+composeCompiler = "1.4.6"
 androidxComposeBom = "2023.04.01"
 accompanist = "0.30.0"
 
@@ -56,6 +56,7 @@ kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-
 # Dependencies of the included build-logic
 gradle-plugin-buildtools = { module = "com.android.tools.build:gradle", version.ref = "gradleAndroidPlugin" }
 gradle-plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradle-plugin-hilt = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 
 [plugins]
 

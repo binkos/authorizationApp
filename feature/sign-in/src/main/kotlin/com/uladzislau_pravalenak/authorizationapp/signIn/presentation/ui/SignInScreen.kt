@@ -6,7 +6,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -41,7 +40,7 @@ fun SignInScreen() {
                     }
                 }
                 is SignInAction.NavigateToSignUpFlow -> {
-                    navigator.navigate("${AppFlowRoutes.SIGN_UP.name}/true")
+                    navigator.navigate(AppFlowRoutes.SIGN_UP.name)
                 }
                 is SignInAction.ShowErrorDialog -> {
                 }

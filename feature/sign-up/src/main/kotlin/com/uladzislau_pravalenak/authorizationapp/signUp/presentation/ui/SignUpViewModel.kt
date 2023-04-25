@@ -2,8 +2,9 @@ package com.uladzislau_pravalenak.authorizationapp.signUp.presentation.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pracel.authorizationApp.kmm.profile.api.ProfileValidator
+import com.pracel.authorizationApp.kmm.profile.provider.ProfileValidator
 import com.uladzislau_pravalenak.authorizationapp.signUp.domain.repository.SignUpRepository
-import com.uladzislau_pravalenak.authorizationapp.signUp.domain.validator.ProfileValidator
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpAction
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpEvent
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpState
@@ -16,8 +17,9 @@ import javax.inject.Inject
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
     private val repository: SignUpRepository,
-    private val profileValidator: ProfileValidator
 ) : ViewModel() {
+
+    private val profileValidator: ProfileValidator = ProfileValidator()
 
     val state: MutableStateFlow<SignUpState> = MutableStateFlow(SignUpState())
     val actions: MutableSharedFlow<SignUpAction> = MutableSharedFlow()
@@ -25,8 +27,7 @@ class SignUpViewModel @Inject constructor(
     fun sendEvents(event: SignUpEvent) {
         when (event) {
             is SignUpEvent.EmailChanged -> {
-                val isEnabled =
-                    profileValidator.validateEmail(event.value) &&
+                val isEnabled = profileValidator.validateEmail(event.value) &&
                             profileValidator.validatePassword(state.value.password)
 
                 state.value = state.value.copy(
@@ -35,8 +36,7 @@ class SignUpViewModel @Inject constructor(
                 )
             }
             is SignUpEvent.PasswordChanged -> {
-                val isEnabled =
-                    profileValidator.validateEmail(state.value.email) &&
+                val isEnabled = profileValidator.validateEmail(state.value.email) &&
                             profileValidator.validatePassword(event.value)
 
                 state.value = state.value.copy(

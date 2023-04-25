@@ -20,7 +20,7 @@ fun ScreenNavHost(
     navController: NavHostController = rememberNavController(),
     startDestination: String,
     route: String? = null,
-    builder: NavBuilder.Default.() -> Unit
+    builder: NavBuilder.Default.(NavController) -> Unit
 ) {
     CompositionLocalProvider(
         LocalNavigator provides rememberNavigator(navController),
@@ -31,7 +31,7 @@ fun ScreenNavHost(
             startDestination = startDestination,
             route = route,
         ) {
-            DefaultNavBuilder(this).builder()
+            DefaultNavBuilder(this).builder(navController)
         }
     }
 }

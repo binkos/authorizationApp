@@ -3,7 +3,6 @@ package com.uladzislau_pravalenak.authorizationapp.signIn.presentation.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uladzislau_pravalenak.authorizationapp.signIn.domain.repository.SignInRepository
-import com.uladzislau_pravalenak.authorizationapp.signIn.domain.validator.ProfileValidator
 import com.uladzislau_pravalenak.authorizationapp.signIn.presentation.model.SignInAction
 import com.uladzislau_pravalenak.authorizationapp.signIn.presentation.model.SignInEvent
 import com.uladzislau_pravalenak.authorizationapp.signIn.presentation.model.SignInState
@@ -37,7 +36,7 @@ class SignInViewModel @Inject constructor(
                 }
             }
             is SignInEvent.PasswordChanged -> {
-                val isEnabled = state.value.email.isNotEmpty() && state.value.password.isNotEmpty()
+                val isEnabled = state.value.email.isNotEmpty() && event.value.isNotEmpty()
 
                 state.value = state.value.copy(
                     password = event.value,

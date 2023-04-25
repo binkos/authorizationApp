@@ -2,8 +2,6 @@ package com.uladzislau_pravalenak.authorizationapp.signIn.di
 
 import com.uladzislau_pravalenak.authorizationapp.signIn.domain.repository.SignInRepository
 import com.uladzislau_pravalenak.authorizationapp.signIn.data.repository.SignInRepositoryImpl
-import com.uladzislau_pravalenak.authorizationapp.signIn.domain.validator.DefaultProfileValidator
-import com.uladzislau_pravalenak.authorizationapp.signIn.domain.validator.ProfileValidator
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,8 +15,4 @@ internal interface SignInModule {
     @Binds
     @ViewModelScoped
     fun bindsSignInRepository(impl: SignInRepositoryImpl): SignInRepository
-
-    @Binds
-    @ViewModelScoped
-    fun bindsProfileValidator(impl: DefaultProfileValidator): ProfileValidator
 }

@@ -1,5 +1,6 @@
 import com.android.build.gradle.BaseExtension
 import com.uladzislau_pravalenak.authorization.internal.libs
+import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -26,6 +27,10 @@ private fun BaseExtension.configureDefaultConfig(target: Project) {
             resources.excludes += "META-INF/DEPENDENCIES"
         }
 
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_17
+            targetCompatibility = JavaVersion.VERSION_17
+        }
 //        testOptions {
 //            unitTests {
 //                isIncludeAndroidResources = true
@@ -58,18 +63,16 @@ private fun Project.suppressOptIn() {
     tasks.withType<KotlinCompile>()
         .configureEach {
             kotlinOptions {
-                jvmTarget = "1.8"
-
                 freeCompilerArgs = freeCompilerArgs + listOf(
-                    "-Xopt-in=com.google.accompanist.pager.ExperimentalPagerApi",
-                    "-Xopt-in=androidx.compose.foundation.ExperimentalFoundationApi",
-                    "-Xopt-in=androidx.compose.ui.ExperimentalComposeUiApi",
-                    "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-                    "-Xopt-in=kotlinx.serialization.ExperimentalSerializationApi",
-                    "-Xopt-in=kotlin.time.ExperimentalTime",
-                    "-Xopt-in=kotlin.RequiresOptIn",
-                    "-Xopt-in=androidx.compose.animation.ExperimentalAnimationApi",
-                    "-Xopt-in=androidx.compose.foundation.layout.ExperimentalLayoutApi"
+                    "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi",
+                    "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
+                    "-opt-in=androidx.compose.ui.ExperimentalComposeUiApi",
+                    "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                    "-opt-in=kotlinx.serialization.ExperimentalSerializationApi",
+                    "-opt-in=kotlin.time.ExperimentalTime",
+                    "-opt-in=kotlin.RequiresOptIn",
+                    "-opt-in=androidx.compose.animation.ExperimentalAnimationApi",
+                    "-opt-in=androidx.compose.foundation.layout.ExperimentalLayoutApi"
                 )
             }
         }

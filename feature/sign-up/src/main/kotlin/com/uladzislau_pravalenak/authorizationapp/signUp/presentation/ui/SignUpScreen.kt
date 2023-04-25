@@ -1,7 +1,5 @@
 package com.uladzislau_pravalenak.authorizationapp.signUp.presentation.ui
 
-import androidx.activity.compose.BackHandler
-import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Surface
@@ -20,36 +18,24 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.uladzislau_pravalenak.authorization.core.ui.input.EmailInputField
 import com.uladzislau_pravalenak.authorization.core.ui.input.PasswordInputField
 import com.uladzislau_pravalenak.authorization.core.ui.theme.AuthorizationAppTheme
-import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.LocalNavigator
+import com.uladzislau_pravalenak.authorizationapp.signUp.data.dto.SignUpResponse
+import com.uladzislau_pravalenak.authorizationapp.signUp.domain.repository.SignUpRepository
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpAction
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpEvent
 import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.model.SignUpState
 import com.uladzislau_pravalenk.authorizationapp.core.extensions.currentOrThrow
-import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
 
 @Composable
-fun SignUpScreen(navigateBack: Boolean = false) {
+fun SignUpScreen(
+    onSignedUp: () -> Unit,
+) {
     val viewModel: SignUpViewModel = hiltViewModel()
     val state by viewModel.state.collectAsState()
-    val navigator = LocalNavigator.currentOrThrow
-    val dispatcherOwner = LocalOnBackPressedDispatcherOwner.current
-
-    BackHandler {
-        if (navigateBack) {
-            navigator.popBackStack()
-        } else {
-            navigator.navigate(AppFlowRoutes.SIGN_IN.name) {
-                popUpTo("${AppFlowRoutes.SIGN_UP.name}/{navigateBack}") { inclusive = true }
-            }
-        }
-    }
 
     LaunchedEffect(key1 = Unit) {
         viewModel.actions.collect { action ->
             when (action) {
-                is SignUpAction.NavigateToSignIn -> {
-                    dispatcherOwner?.onBackPressedDispatcher?.onBackPressed()
-                }
+                is SignUpAction.NavigateToSignIn -> onSignedUp()
                 is SignUpAction.ShowErrorDialog -> {}
             }
         }

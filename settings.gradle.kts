@@ -31,3 +31,6 @@ include(":feature:sign-up")
 include(":shared:api")
 include(":shared:auth")
 include(":shared:start-destination")
+//include(":shared:profile")
+
+include(":kmm:profile")
