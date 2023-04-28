@@ -22,6 +22,7 @@ dependencies {
     implementation(projects.feature.onboarding)
     implementation(projects.feature.signIn)
     implementation(projects.feature.splash)
+    implementation(projects.feature.main.compose)
 
     implementation(projects.shared.startDestination)
 

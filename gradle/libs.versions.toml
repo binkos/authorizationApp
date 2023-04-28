@@ -58,6 +58,9 @@ gradle-plugin-buildtools = { module = "com.android.tools.build:gradle", version.
 gradle-plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradle-plugin-hilt = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 
+#kmm-mvvm-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "0.16.1" }
+#kmm-mvvm-flow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "0.16.1" }
+
 [plugins]
 
 android-application = { id = "com.android.application", version.ref = "gradleAndroidPlugin" }

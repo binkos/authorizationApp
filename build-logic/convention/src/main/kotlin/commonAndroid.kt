@@ -66,6 +66,7 @@ private fun Project.suppressOptIn() {
                 freeCompilerArgs = freeCompilerArgs + listOf(
                     "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi",
                     "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
+                    "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
                     "-opt-in=androidx.compose.ui.ExperimentalComposeUiApi",
                     "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
                     "-opt-in=kotlinx.serialization.ExperimentalSerializationApi",

@@ -22,7 +22,10 @@ include(":core:core")
 include(":core:core-ui")
 include(":core:core-navigation")
 
-include(":feature:main")
+include(":feature:main:api")
+include(":feature:main:impl")
+include(":feature:main:compose")
+
 include(":feature:onboarding")
 include(":feature:sign-in")
 include(":feature:splash")
