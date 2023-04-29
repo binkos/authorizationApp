@@ -26,6 +26,10 @@ include(":feature:main:api")
 include(":feature:main:impl")
 include(":feature:main:compose")
 
+include(":feature:home:api")
+include(":feature:home:impl")
+include(":feature:home:compose")
+
 include(":feature:onboarding")
 include(":feature:sign-in")
 include(":feature:splash")
