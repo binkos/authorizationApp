@@ -3,8 +3,8 @@ package com.pracel.authorizationapp.main.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import com.pracel.authorizationapp.home.ui.HomeScreen
 import com.pracel.authorizationapp.main.ui.tabs.accounts.AccountsScreen
-import com.pracel.authorizationapp.main.ui.tabs.home.HomeScreen
 import com.pracel.authorizationapp.main.ui.tabs.transactions.TransactionsScreen
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navHost.ScreenNavHost
 
@@ -13,13 +13,6 @@ fun MainNavHost(
     modifier: Modifier,
     navHostController: NavHostController
 ) {
-//    Box(modifier = modifier) {
-//        when (currentIndex) {
-//            0 -> HomeScreen()
-//            1 -> TransactionsScreen()
-//            2 -> AccountsScreen()
-//        }
-//    }
 
     ScreenNavHost(
         modifier = modifier,

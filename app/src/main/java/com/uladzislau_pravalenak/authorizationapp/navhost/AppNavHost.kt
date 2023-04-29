@@ -2,11 +2,7 @@ package com.uladzislau_pravalenak.authorizationapp.navhost
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
-import androidx.core.util.Consumer
-import androidx.navigation.NavType
-import androidx.navigation.navArgument
 import com.pracel.authorizationapp.main.navigation.MainFlowNavScreen
-import com.pracel.authorizationapp.main.ui.MainScreen
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navBuilder.NavBuilder
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navHost.ScreenNavHost
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.LocalNavigator
@@ -46,9 +42,7 @@ private fun NavBuilder.Default.configureSignUpScreen(backStackSize: Int) {
                 navigator.popBackStack()
             }
         }
-        BackHandler {
-            onNavigate()
-        }
+        BackHandler(onBack = onNavigate)
 
         SignUpScreen { onNavigate() }
     }

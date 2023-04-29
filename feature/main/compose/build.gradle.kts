@@ -12,6 +12,8 @@ dependencies {
     implementation(projects.core.coreUi)
     implementation(projects.core.coreNavigation)
 
+    implementation(projects.feature.home.compose)
+
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.foundation)
     implementation(libs.compose.ui)
