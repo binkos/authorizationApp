@@ -22,6 +22,10 @@ include(":core:core")
 include(":core:core-ui")
 include(":core:core-navigation")
 
+include(":feature:accounts:api")
+include(":feature:accounts:impl")
+include(":feature:accounts:compose")
+
 include(":feature:main:api")
 include(":feature:main:impl")
 include(":feature:main:compose")
