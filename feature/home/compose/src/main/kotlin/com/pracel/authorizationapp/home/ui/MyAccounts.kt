@@ -1,9 +1,5 @@
 package com.pracel.authorizationapp.home.ui
 
-import android.graphics.drawable.Icon
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.rememberScrollableState
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,7 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.uladzislau_pravalenak.authorization.core.ui.theme.AuthorizationAppTheme
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.pracel.authorizationapp.home.ui.model.Account
+import com.pracel.authorizationapp.home.model.Account
 
 @Composable
 internal fun MyAccounts(accounts: List<Account>) {

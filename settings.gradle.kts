@@ -45,3 +45,4 @@ include(":shared:start-destination")
 //include(":shared:profile")
 
 include(":kmm:profile")
+include(":library:mvi")

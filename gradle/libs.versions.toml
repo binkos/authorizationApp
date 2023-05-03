@@ -23,9 +23,11 @@ hilt = "2.45"
 androidx-appcompat = "androidx.appcompat:appcompat:1.6.1"
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-splashscreen = "androidx.core:core-splashscreen:1.0.1"
 androidx-datastore = "androidx.datastore:datastore-preferences:1.0.0"
 androidx-navigation-compose-hilt = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "navigationComposeHilt" }
+
 
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidxComposeBom" }
 compose-material = { module = "androidx.compose.material:material" }
@@ -39,6 +41,7 @@ compose-navigation = { module = "androidx.navigation:navigation-compose", versio
 
 compose-accompanist-pager = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist" }
 
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
@@ -60,6 +63,8 @@ gradle-plugin-hilt = { module = "com.google.dagger:hilt-android-gradle-plugin", 
 
 #kmm-mvvm-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "0.16.1" }
 #kmm-mvvm-flow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "0.16.1" }
+
+
 
 [plugins]
 

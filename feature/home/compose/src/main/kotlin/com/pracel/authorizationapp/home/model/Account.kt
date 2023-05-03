@@ -1,4 +1,4 @@
-package com.pracel.authorizationapp.home.ui.model
+package com.pracel.authorizationapp.home.model
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
