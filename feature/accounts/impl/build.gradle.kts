@@ -12,6 +12,8 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+                implementation(projects.feature.accounts.api)
+                implementation(libs.coroutines.core)
             }
         }
     }

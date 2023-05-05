@@ -36,7 +36,7 @@ fun MainScreen() {
         bottomBar = { BottomBar(currentTab, onNavigate) }
     ) {
         MainNavHost(
-            modifier = Modifier.padding(it.calculateBottomPadding()),
+            modifier = Modifier.padding(bottom = it.calculateBottomPadding()),
             navHostController = navigationController
         )
     }

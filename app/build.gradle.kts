@@ -24,6 +24,9 @@ dependencies {
     implementation(projects.feature.splash)
     implementation(projects.feature.main.compose)
 
+    implementation(projects.feature.accounts.api)
+    implementation(projects.feature.accounts.impl)
+
     implementation(projects.shared.startDestination)
 
     implementation(libs.compose.navigation)

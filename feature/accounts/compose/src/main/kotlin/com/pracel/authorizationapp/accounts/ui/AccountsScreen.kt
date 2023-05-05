@@ -1,4 +1,4 @@
-package com.pracel.authorizationapp.main.ui.tabs.accounts
+package com.pracel.authorizationapp.accounts.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

@@ -1,6 +1,6 @@
 package com.pracel.authorizationapp.accounts.api
 
-interface AccountsRepositoryApi {
+interface AccountsRepository {
 
     suspend fun getAccounts(): List<Account>
 }

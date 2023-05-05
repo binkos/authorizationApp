@@ -1,8 +1,14 @@
 package com.pracel.authorizationapp.home.model
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBalanceWallet
+import androidx.compose.material.icons.filled.CreditCard
+import androidx.compose.material.icons.filled.Money
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.pracel.authorizationapp.accounts.api.AccountCurrency
+import com.pracel.authorizationapp.accounts.api.AccountType
 
 @Immutable
 data class Account(
@@ -12,3 +18,21 @@ data class Account(
     val color: Color
 )
 
+fun mapToUi(acc: com.pracel.authorizationapp.accounts.api.Account): Account = with(acc) {
+    val icon = when (type) {
+        AccountType.CreditCard -> Icons.Filled.CreditCard
+        AccountType.DebitCard -> Icons.Filled.AccountBalanceWallet
+        AccountType.Wallet -> Icons.Filled.AccountBalanceWallet
+        AccountType.CryptoWallet -> Icons.Filled.AccountBalanceWallet
+        AccountType.Cash -> Icons.Filled.Money
+        AccountType.Other -> Icons.Filled.Money
+    }
+    val currency = when (currency) {
+        AccountCurrency.Dollar -> '$'
+        AccountCurrency.Euro -> '€'
+        AccountCurrency.Ruble -> '₽'
+        AccountCurrency.Other -> ""
+    }
+
+    return Account(icon, "$currency$value", "${type.name}($currency)", Color.Gray)
+}

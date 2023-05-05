@@ -27,8 +27,11 @@ import androidx.compose.ui.unit.sp
 import com.pracel.authorizationapp.home.model.Account
 
 @Composable
-internal fun MyAccounts(accounts: List<Account>) {
-    Column {
+internal fun MyAccounts(
+    modifier: Modifier = Modifier,
+    accounts: List<Account>
+) {
+    Column(modifier = modifier) {
         Header()
         AccountsBlock(modifier = Modifier.padding(top = 6.dp), accounts = accounts)
     }
@@ -79,7 +82,7 @@ fun AllAccountsPreview() {
 
     AuthorizationAppTheme {
         Surface {
-            MyAccounts(accounts)
+            MyAccounts(accounts = accounts)
         }
     }
 }

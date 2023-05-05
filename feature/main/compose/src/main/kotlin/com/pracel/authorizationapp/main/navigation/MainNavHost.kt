@@ -3,8 +3,8 @@ package com.pracel.authorizationapp.main.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import com.pracel.authorizationapp.accounts.ui.AccountsScreen
 import com.pracel.authorizationapp.home.ui.HomeScreen
-import com.pracel.authorizationapp.main.ui.tabs.accounts.AccountsScreen
 import com.pracel.authorizationapp.main.ui.tabs.transactions.TransactionsScreen
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navHost.ScreenNavHost
 
