@@ -5,6 +5,7 @@ import androidx.compose.material.icons.filled.Face
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.vector.ImageVector
 
+//TODO Don't share it through DI in future as it doesn't give a lot of profit
 @Immutable
 data class TransactionModel(
     val icon: ImageVector = Icons.Default.Face,
