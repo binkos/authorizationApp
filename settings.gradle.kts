@@ -20,11 +20,8 @@ include(":app")
 
 include(":core:core")
 include(":core:core-ui")
+include(":core:core-di")
 include(":core:core-navigation")
-
-include(":feature:accounts:api")
-include(":feature:accounts:impl")
-include(":feature:accounts:compose")
 
 include(":feature:main:api")
 include(":feature:main:impl")
@@ -33,6 +30,14 @@ include(":feature:main:compose")
 include(":feature:home:api")
 include(":feature:home:impl")
 include(":feature:home:compose")
+
+include(":feature:accounts:api")
+include(":feature:accounts:impl")
+include(":feature:accounts:compose")
+
+include(":feature:transactions:api")
+include(":feature:transactions:impl")
+include(":feature:transactions:compose")
 
 include(":feature:onboarding")
 include(":feature:sign-in")

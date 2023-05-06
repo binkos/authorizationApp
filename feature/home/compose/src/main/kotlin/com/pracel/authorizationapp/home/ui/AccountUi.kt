@@ -33,7 +33,7 @@ internal fun AccountUi(modifier: Modifier = Modifier, account: Account) {
             Modifier
                 .background(account.color)
                 .padding(16.dp)
-                .size(width = 120.dp, height = 100.dp)
+                .size(width = 140.dp, height = 100.dp)
         ) {
             Icon(
                 modifier = Modifier.size(40.dp),

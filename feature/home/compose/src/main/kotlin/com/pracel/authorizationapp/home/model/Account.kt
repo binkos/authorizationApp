@@ -12,9 +12,11 @@ import com.pracel.authorizationapp.accounts.api.AccountType
 
 @Immutable
 data class Account(
+    // TODO: create sealed class Wrapper to have opportunity to load remote and Local images
     val icon: ImageVector,
     val value: String,
     val type: String,
+    // TODO: Remove Color and use Enum instead as it doesn't support theming
     val color: Color
 )
 

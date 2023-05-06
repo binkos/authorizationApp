@@ -1,7 +1,16 @@
+import com.uladzislau_pravalenak.authorization.internal.libs
+
 plugins {
-    id("com.android.library")
-    kotlin("multiplatform")
+    id("multiplatform-android-setup")
 //    id("org.jetbrains.compose")
+}
+
+android {
+    buildFeatures.compose = true
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
+    }
 }
 
 kotlin {
@@ -32,9 +41,5 @@ kotlin {
 //                implementation(Dependencies.Android.Compose.icons)
             }
         }
-    }
-
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
     }
 }

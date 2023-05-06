@@ -10,9 +10,11 @@ android {
 dependencies {
     implementation(projects.core.core)
     implementation(projects.core.coreUi)
+    implementation(projects.core.coreDi)
     implementation(projects.core.coreNavigation)
 
     implementation(projects.feature.accounts.api)
+    implementation(projects.feature.transactions.api)
 
     implementation(projects.library.mvi)
 

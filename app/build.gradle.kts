@@ -16,6 +16,7 @@ android {
 dependencies {
     implementation(projects.core.coreUi)
     implementation(projects.core.core)
+    implementation(projects.core.coreDi)
     implementation(projects.core.coreNavigation)
 
     implementation(projects.feature.signUp)
@@ -26,6 +27,10 @@ dependencies {
 
     implementation(projects.feature.accounts.api)
     implementation(projects.feature.accounts.impl)
+
+    implementation(projects.feature.transactions.api)
+    implementation(projects.feature.transactions.compose)
+    implementation(projects.feature.transactions.impl)
 
     implementation(projects.shared.startDestination)
 

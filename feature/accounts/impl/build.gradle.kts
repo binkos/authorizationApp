@@ -13,6 +13,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(projects.feature.accounts.api)
+                implementation(projects.core.coreDi)
                 implementation(libs.coroutines.core)
             }
         }

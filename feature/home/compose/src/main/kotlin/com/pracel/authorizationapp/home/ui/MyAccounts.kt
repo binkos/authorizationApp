@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.uladzislau_pravalenak.authorization.core.ui.theme.AuthorizationAppTheme
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.pracel.authorizationapp.home.compose.R
 import com.pracel.authorizationapp.home.model.Account
 
 @Composable
@@ -32,25 +33,8 @@ internal fun MyAccounts(
     accounts: List<Account>
 ) {
     Column(modifier = modifier) {
-        Header()
+        Header(R.string.my_accounts)
         AccountsBlock(modifier = Modifier.padding(top = 6.dp), accounts = accounts)
-    }
-}
-
-@Composable
-private fun Header() {
-    Row(
-        modifier = Modifier
-            .height(36.dp)
-            .padding(horizontal = 16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(text = "My Accounts", fontSize = 18.sp)
-        Spacer(modifier = Modifier.weight(1f))
-        Icon(
-            imageVector = Icons.Filled.KeyboardArrowRight,
-            contentDescription = "right arrow keyboard"
-        )
     }
 }
 

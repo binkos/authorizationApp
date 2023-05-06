@@ -10,9 +10,11 @@ android {
 
 kotlin {
     sourceSets {
-        commonMain {
+        commonMain{
             dependencies {
+                implementation(projects.core.coreDi)
             }
         }
+
     }
 }
