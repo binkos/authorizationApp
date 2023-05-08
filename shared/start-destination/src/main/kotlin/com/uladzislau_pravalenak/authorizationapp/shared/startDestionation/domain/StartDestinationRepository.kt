@@ -7,5 +7,4 @@ interface StartDestinationRepository {
     val startDestination: Flow<String>
 
     suspend fun setStartDestination(destination: String)
-
 }

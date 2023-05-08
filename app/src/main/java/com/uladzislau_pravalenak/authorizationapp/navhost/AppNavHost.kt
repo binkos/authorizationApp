@@ -2,6 +2,7 @@ package com.uladzislau_pravalenak.authorizationapp.navhost
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import com.pracel.authorizationapp.main.navigation.MainFlowNavScreen
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navBuilder.NavBuilder
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navHost.ScreenNavHost
@@ -21,7 +22,7 @@ fun AppNavHost() {
         screen(AppFlowRoutes.SIGN_IN.name) {
             SignInScreen()
         }
-        configureSignUpScreen(backStackSize = navController.backQueue.size)
+        configureSignUpScreen(navController)
 
         screen(AppFlowRoutes.MAIN_FLOW.name) {
             MainFlowNavScreen()
@@ -29,12 +30,12 @@ fun AppNavHost() {
     }
 }
 
-private fun NavBuilder.Default.configureSignUpScreen(backStackSize: Int) {
+private fun NavBuilder.Default.configureSignUpScreen(navController: NavController) {
     screen(AppFlowRoutes.SIGN_UP.name) {
         val navigator = LocalNavigator.currentOrThrow
 
         val onNavigate: () -> Unit = {
-            if (backStackSize == 2) {
+            if (navController.backQueue.size == 2) {
                 navigator.navigate(AppFlowRoutes.SIGN_IN.name) {
                     popUpTo(AppFlowRoutes.SIGN_UP.name) { inclusive = true }
                 }
