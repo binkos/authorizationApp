@@ -1,4 +1,5 @@
 import com.android.build.gradle.BaseExtension
+import com.uladzislau_pravalenak.authorization.internal.AppConfig
 import com.uladzislau_pravalenak.authorization.internal.libs
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
@@ -17,6 +18,7 @@ private fun BaseExtension.configureDefaultConfig(target: Project) {
     compileSdkVersion(target.libs.versions.compileSdk.get().toInt())
     defaultConfig {
         minSdk = target.libs.versions.minSdk.get().toInt()
+        targetSdk = AppConfig.TARGET_SDK_VERSION
 
         consumerProguardFiles("consumer-rules.pro")
 

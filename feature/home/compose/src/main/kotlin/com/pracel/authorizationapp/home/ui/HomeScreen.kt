@@ -7,11 +7,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
+import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.pracel.authorizationapp.accounts.api.di.AccountComponentProvider
-import com.pracel.authorizationapp.accounts.api.di.AccountsComponent
+import com.pracel.authorizationapp.home.api.di.HomeComponentProvider
 import com.pracel.authorizationapp.home.model.HomeState
 import com.pracel.authorizationapp.home.viewmodel.HomeViewModel
 import com.pracel.authorizationapp.transactions.api.di.TransactionsComponent
@@ -21,13 +24,12 @@ import com.pracel.authorizationapp.transactions.api.model.TransactionModel
 @Composable
 fun HomeScreen() {
     val appContext = LocalContext.current.applicationContext
-    val accountsComponent =
-        appContext.getProvider<AccountComponentProvider>().provideAccountComponent()
-    val transactionsComponent =
+    val transactionsComponent = remember {
         appContext.getProvider<TransactionsComponentProvider>().provideTransactionsComponent()
+    }
 
     val viewModel: HomeViewModel =
-        viewModel(initializer = { createViewModel(accountsComponent, transactionsComponent) })
+        viewModel(initializer = { createViewModel(transactionsComponent) })
 
     val state by viewModel.stateFlow.collectAsState()
     HomeScreenUi(state) { model ->
@@ -53,14 +55,21 @@ private fun HomeScreenUi(
     }
 }
 
-private fun createViewModel(
-    accountsComponent: AccountsComponent,
+private fun CreationExtras.createViewModel(
     transactionsComponent: TransactionsComponent
 ): HomeViewModel {
-    val accountRepository = accountsComponent.repository
-    val transactionsRepository = transactionsComponent.repository
+    val context = checkNotNull(this[APPLICATION_KEY])
+    val accountsComponent =
+        context.getProvider<AccountComponentProvider>().provideAccountComponent()
 
-    return HomeViewModel(accountRepository, transactionsRepository)
+    val homeComponent =
+        context.getProvider<HomeComponentProvider>()
+            .provideHomeComponent(transactionsComponent)
+
+    val accountRepository = accountsComponent.repository
+    val lastTransactionsUseCase = homeComponent.lastTransactionsUseCase
+
+    return HomeViewModel(accountRepository, lastTransactionsUseCase)
 }
 
 fun <T> Context.getProvider(): T = this as T

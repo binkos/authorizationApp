@@ -11,14 +11,48 @@ internal class TransactionsRepositoryImpl(private val dispatchers: Dispatchers) 
     TransactionsRepository {
     override suspend fun getAllTransactions(): List<Transaction> {
         return withContext(dispatchers.IO) {
-            delay(2000L)
             listOf(
-                Transaction(TransactionType.Income, "", "", ""),
-                Transaction(TransactionType.Income, "", "", ""),
-                Transaction(TransactionType.Income, "", "", ""),
-                Transaction(TransactionType.Income, "", "", ""),
-                Transaction(TransactionType.Income, "", "", ""),
-            )
+                Transaction(TransactionType.Income, "100", "DebitCard(*8644)", "Health"),
+                Transaction(TransactionType.Income, "10", "Cash", "Travel"),
+                Transaction(TransactionType.Income, "20", "Wallet", "Transportation"),
+                Transaction(TransactionType.Income, "30", "CryptoWallet", "School"),
+                Transaction(TransactionType.Income, "45", "DebitCard(*5111)", "Education"),
+                Transaction(TransactionType.Income, "100", "DebitCard(*8644)", "Health"),
+                Transaction(TransactionType.Income, "10", "Cash", "Travel"),
+                Transaction(TransactionType.Income, "20", "Wallet", "Transportation"),
+                Transaction(TransactionType.Income, "30", "CryptoWallet", "School"),
+                Transaction(TransactionType.Income, "45", "DebitCard(*5111)", "Education"),
+                Transaction(TransactionType.Income, "100", "DebitCard(*8644)", "Health"),
+                Transaction(TransactionType.Income, "10", "Cash", "Travel"),
+                Transaction(TransactionType.Income, "20", "Wallet", "Transportation"),
+                Transaction(TransactionType.Income, "30", "CryptoWallet", "School"),
+                Transaction(TransactionType.Income, "45", "DebitCard(*5111)", "Education"),
+                Transaction(TransactionType.Income, "100", "DebitCard(*8644)", "Health"),
+                Transaction(TransactionType.Income, "10", "Cash", "Travel"),
+                Transaction(TransactionType.Income, "20", "Wallet", "Transportation"),
+                Transaction(TransactionType.Income, "30", "CryptoWallet", "School"),
+                Transaction(TransactionType.Income, "45", "DebitCard(*5111)", "Education"),
+                Transaction(TransactionType.Income, "100", "DebitCard(*8644)", "Health"),
+                Transaction(TransactionType.Income, "10", "Cash", "Travel"),
+                Transaction(TransactionType.Income, "20", "Wallet", "Transportation"),
+                Transaction(TransactionType.Income, "30", "CryptoWallet", "School"),
+                Transaction(TransactionType.Income, "45", "DebitCard(*5111)", "Education"),
+                Transaction(TransactionType.Income, "100", "DebitCard(*8644)", "Health"),
+                Transaction(TransactionType.Income, "10", "Cash", "Travel"),
+                Transaction(TransactionType.Income, "20", "Wallet", "Transportation"),
+                Transaction(TransactionType.Income, "30", "CryptoWallet", "School"),
+                Transaction(TransactionType.Income, "45", "DebitCard(*5111)", "Education"),
+                Transaction(TransactionType.Income, "100", "DebitCard(*8644)", "Health"),
+                Transaction(TransactionType.Income, "10", "Cash", "Travel"),
+                Transaction(TransactionType.Income, "20", "Wallet", "Transportation"),
+                Transaction(TransactionType.Income, "30", "CryptoWallet", "School"),
+                Transaction(TransactionType.Income, "45", "DebitCard(*5111)", "Education"),
+                Transaction(TransactionType.Income, "100", "DebitCard(*8644)", "Health"),
+                Transaction(TransactionType.Income, "10", "Cash", "Travel"),
+                Transaction(TransactionType.Income, "20", "Wallet", "Transportation"),
+                Transaction(TransactionType.Income, "30", "CryptoWallet", "School"),
+                Transaction(TransactionType.Income, "45", "DebitCard(*5111)", "Education"),
+                )
         }
     }
 }

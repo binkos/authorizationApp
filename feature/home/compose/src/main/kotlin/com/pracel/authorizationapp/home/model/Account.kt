@@ -20,7 +20,7 @@ data class Account(
     val color: Color
 )
 
-fun mapToUi(acc: com.pracel.authorizationapp.accounts.api.Account): Account = with(acc) {
+fun mapAccountToUi(acc: com.pracel.authorizationapp.accounts.api.Account): Account = with(acc) {
     val icon = when (type) {
         AccountType.CreditCard -> Icons.Filled.CreditCard
         AccountType.DebitCard -> Icons.Filled.AccountBalanceWallet

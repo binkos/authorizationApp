@@ -33,47 +33,12 @@ private fun TransactionsBlock(
     transactions: List<TransactionModel>,
     transactionsUi: @Composable (transaction: TransactionModel) -> Unit
 ) {
-    LazyColumn(
+    Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        item {
-            Spacer(modifier = Modifier)
-        }
-        items(transactions) { transaction -> transactionsUi(transaction) }
-        item {
-            Spacer(modifier = Modifier)
-        }
+        Spacer(modifier = Modifier)
+        transactions.forEach { transaction -> transactionsUi(transaction) }
+        Spacer(modifier = Modifier)
     }
-}
-
-@Preview
-@Composable
-fun LastTransactionsPreview() {
-//    val transactions = listOf(
-//        TransactionModel(Icons.Filled.RestaurantMenu, "Restaurant", "Cash", "-$205"),
-//        TransactionModel(Icons.Filled.HealthAndSafety, "Health", "Cash", "-$5"),
-//        TransactionModel(Icons.Filled.DirectionsBus, "Transport", "Credit Card", "+$5"),
-//        TransactionModel(Icons.Filled.SportsEsports, "VideoGames", "Cash", "-$20"),
-//        TransactionModel(Icons.Filled.DirectionsCar, "Car", "Debit Card", "-$15"),
-//        TransactionModel(Icons.Filled.AirplanemodeActive, "Traveling", "Cash", "-$35"),
-//        TransactionModel(Icons.Filled.ShoppingCart, "Food Shop", "Crypto Wallet", "-$45"),
-//    )
-//    AuthorizationAppTheme {
-//        Surface {
-//            LastTransactions(
-//                transactions = transactions,
-//                transactionsUiModule = object : TransactionsUiModule {
-//                    @Composable
-//                    override fun RenderSingleTransaction(
-//                        modifier: Modifier,
-//                        transactionModel: TransactionModel
-//                    ) {
-//                        TODO("Not yet implemented")
-//                    }
-//
-//                }
-//            )
-//        }
-//    }
 }
