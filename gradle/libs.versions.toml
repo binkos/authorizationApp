@@ -9,7 +9,7 @@ kotlin = "1.8.20"
 ktor = '2.2.4'
 serialization = '1.5.0'
 composeCompiler = "1.4.6"
-androidxComposeBom = "2023.04.01"
+androidxComposeBom = "2023.05.00"
 accompanist = "0.30.0"
 
 navigationCompose = "2.5.3"
@@ -40,6 +40,7 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 
 compose-accompanist-pager = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanist" }
+compose-accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
@@ -60,6 +61,7 @@ kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-
 gradle-plugin-buildtools = { module = "com.android.tools.build:gradle", version.ref = "gradleAndroidPlugin" }
 gradle-plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradle-plugin-hilt = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
+androidx-core = { group = "androidx.core", name = "core", version = "1.10.0" }
 
 #kmm-mvvm-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "0.16.1" }
 #kmm-mvvm-flow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "0.16.1" }

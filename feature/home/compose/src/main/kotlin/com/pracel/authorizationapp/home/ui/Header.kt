@@ -17,9 +17,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Header(@StringRes textId: Int) {
+fun Header(
+    @StringRes textId: Int,
+    modifier: Modifier = Modifier,
+) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .height(36.dp)
             .padding(horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically

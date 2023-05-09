@@ -2,6 +2,7 @@ package com.uladzislau_pravalenak.authorizationapp.navhost
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.pracel.authorizationapp.main.navigation.MainFlowNavScreen
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navBuilder.NavBuilder
@@ -15,8 +16,11 @@ import com.uladzislau_pravalenk.authorizationapp.core.extensions.currentOrThrow
 import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
 
 @Composable
-fun AppNavHost() {
-    ScreenNavHost(startDestination = AppFlowRoutes.SPLASH.name) { navController ->
+fun AppNavHost(modifier: Modifier) {
+    ScreenNavHost(
+        modifier = modifier,
+        startDestination = AppFlowRoutes.SPLASH.name
+    ) { navController ->
         screen(AppFlowRoutes.SPLASH.name) { SplashScreen() }
         screen(AppFlowRoutes.ONBOARDING.name) { OnboardingScreen() }
         screen(AppFlowRoutes.SIGN_IN.name) {

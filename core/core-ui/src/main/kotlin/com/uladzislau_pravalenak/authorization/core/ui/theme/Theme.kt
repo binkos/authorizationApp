@@ -5,7 +5,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.uldazislau_pravalenak.authorizationapp.ui.theme.Shapes
 import com.uldazislau_pravalenak.authorizationapp.ui.theme.Typography
 
@@ -39,6 +41,11 @@ fun AuthorizationAppTheme(
         DarkColorPalette
     } else {
         LightColorPalette
+    }
+
+    val uiController = rememberSystemUiController()
+    SideEffect {
+        uiController.setSystemBarsColor(Color.Transparent, !darkTheme)
     }
 
     MaterialTheme(

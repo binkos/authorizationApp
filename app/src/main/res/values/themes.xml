@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.AuthorizationApp" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/purple_700</item>
-    </style>
+    <style name="Theme.AuthorizationApp" parent="android:Theme.Material.Light.NoActionBar" />
 
     <style name="Theme.AuthorizationApp.Starting" parent="Theme.SplashScreen">
         <!-- Set the splash screen background, animated icon, and animation duration. -->
-        <item name="android:statusBarColor">@color/purple_700</item>
         <item name="windowSplashScreenBackground">@color/teal_200</item>
 
         <!-- Use windowSplashScreenAnimatedIcon to add either a drawable or an animated drawable.

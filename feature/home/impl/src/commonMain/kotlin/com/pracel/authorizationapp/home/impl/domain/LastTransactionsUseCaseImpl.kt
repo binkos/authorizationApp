@@ -8,6 +8,6 @@ class LastTransactionsUseCaseImpl(
     private val transactionsRepository: TransactionsRepository
 ) : LastTransactionsUseCase {
     override suspend fun getLastTransactions(): List<Transaction> {
-        return transactionsRepository.getAllTransactions().take(15)
+        return transactionsRepository.getAllTransactions().take(5)
     }
 }

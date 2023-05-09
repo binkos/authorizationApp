@@ -33,8 +33,8 @@ internal fun MyAccounts(
     accounts: List<Account>
 ) {
     Column(modifier = modifier) {
-        Header(R.string.my_accounts)
-        AccountsBlock(modifier = Modifier.padding(top = 6.dp), accounts = accounts)
+        Header(R.string.my_accounts, modifier = Modifier.padding(vertical = 4.dp))
+        AccountsBlock(accounts = accounts)
     }
 }
 

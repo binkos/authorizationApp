@@ -4,14 +4,6 @@ plugins {
 
 android {
     namespace = "com.uladzislau_pravalenak.authorizationapp.coreui"
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
-    }
 }
 
 dependencies {
@@ -20,4 +12,5 @@ dependencies {
     implementation(libs.compose.foundation)
     implementation(libs.compose.material)
     implementation(libs.compose.material.icons)
+    implementation(libs.compose.accompanist.systemuicontroller)
 }
