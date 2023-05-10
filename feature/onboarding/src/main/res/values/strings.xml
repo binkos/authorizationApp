@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_account_page_message">Create an account to control money transfers you have and split budget between group of people</string>
+    <string name="set_pin_page_message">Set new pin for the account</string>
+    <string name="create_financial_page_message">Create financial group and invite friends</string>
+    <string name="finish_onboarding_message">Are you ready to proceed?</string>
+    <string name="move_to_sign_in">Sign In</string>
+    <string name="move_to_sign_up">Sign Up</string>
+    <string name="continue_onboarding">Continue onboarding</string>
+</resources>
