@@ -8,4 +8,7 @@ actual interface TransactionsUiModule {
 
     @Composable
     fun RenderSingleTransaction(modifier: Modifier, transactionModel: TransactionModel)
+
+    @Composable
+    fun ComposableTransactionScreen()
 }

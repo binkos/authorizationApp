@@ -14,6 +14,7 @@ dependencies {
 
     implementation(projects.feature.home.compose)
     implementation(projects.feature.accounts.compose)
+    implementation(projects.feature.transactions.api)
 
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.foundation)

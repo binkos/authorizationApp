@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -18,16 +16,12 @@ import com.pracel.authorizationapp.home.api.di.HomeComponentProvider
 import com.pracel.authorizationapp.home.model.HomeState
 import com.pracel.authorizationapp.home.viewmodel.HomeViewModel
 import com.pracel.authorizationapp.transactions.api.di.TransactionsComponent
-import com.pracel.authorizationapp.transactions.api.di.TransactionsComponentProvider
 import com.pracel.authorizationapp.transactions.api.model.TransactionModel
 
 @Composable
-fun HomeScreen() {
-    val appContext = LocalContext.current.applicationContext
-    val transactionsComponent = remember {
-        appContext.getProvider<TransactionsComponentProvider>().provideTransactionsComponent()
-    }
-
+fun HomeScreen(
+    transactionsComponent: TransactionsComponent
+) {
     val viewModel: HomeViewModel =
         viewModel(initializer = { createViewModel(transactionsComponent) })
 

@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 import com.pracel.authorizationapp.transactions.api.model.TransactionModel
 
 @Composable
-fun TransactionUi(
+internal fun TransactionUi(
     modifier: Modifier = Modifier,
     transactionModel: TransactionModel
 ) {

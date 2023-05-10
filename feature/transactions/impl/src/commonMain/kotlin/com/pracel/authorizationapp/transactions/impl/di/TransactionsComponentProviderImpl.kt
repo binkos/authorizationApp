@@ -5,10 +5,13 @@ import com.pracel.authorizationapp.transactions.api.di.TransactionsComponentProv
 import kotlinx.coroutines.Dispatchers
 
 class TransactionsComponentProviderImpl : TransactionsComponentProvider {
+    private var cached: TransactionsComponent? = null
 
     override fun provideTransactionsComponent(): TransactionsComponent {
+        if (cached != null) return cached!!
         val accountComponentDependencies = TransactionsComponentDependencies(Dispatchers)
 
-        return TransactionsComponent(accountComponentDependencies)
+        cached = TransactionsComponent(accountComponentDependencies)
+        return cached!!
     }
 }

@@ -16,11 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.pracel.authorizationapp.main.navigation.MainNavHost
 import com.pracel.authorizationapp.main.navigation.MainNavHostTab
+import com.pracel.authorizationapp.transactions.api.di.TransactionsComponentProvider
 
 @Composable
 fun MainScreen() {
@@ -43,9 +45,14 @@ fun MainScreen() {
     Scaffold(
         bottomBar = { BottomBar(currentTab, onNavigate) }
     ) {
+        val context = LocalContext.current.applicationContext
+        val transactionsComponent =
+            remember { (context as TransactionsComponentProvider).provideTransactionsComponent() }
+
         MainNavHost(
             modifier = Modifier.padding(bottom = it.calculateBottomPadding()),
-            navHostController = navigationController
+            navHostController = navigationController,
+            transactionsApi = transactionsComponent
         )
     }
 }
@@ -61,7 +68,10 @@ private fun BottomBar(
         MainNavHostTab.Accounts,
     )
 
-    Box(Modifier.background(Color.Gray).clip(RectangleShape)) {
+    Box(
+        Modifier
+            .background(Color.Gray)
+            .clip(RectangleShape)) {
         Row(
             modifier = Modifier
                 .navigationBarsPadding()

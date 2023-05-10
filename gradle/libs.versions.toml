@@ -15,7 +15,7 @@ accompanist = "0.30.0"
 navigationCompose = "2.5.3"
 navigationComposeHilt = "1.0.0"
 
-gradleAndroidPlugin = "8.0.0"
+gradleAndroidPlugin = "8.0.1"
 
 hilt = "2.45"
 
