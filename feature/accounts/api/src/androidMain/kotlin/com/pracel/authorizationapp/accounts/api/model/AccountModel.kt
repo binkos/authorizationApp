@@ -1,4 +1,4 @@
-package com.pracel.authorizationapp.home.model
+package com.pracel.authorizationapp.accounts.api.model
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBalanceWallet
@@ -7,11 +7,12 @@ import androidx.compose.material.icons.filled.Money
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.pracel.authorizationapp.accounts.api.Account
 import com.pracel.authorizationapp.accounts.api.AccountCurrency
 import com.pracel.authorizationapp.accounts.api.AccountType
 
 @Immutable
-data class Account(
+data class AccountModel(
     // TODO: create sealed class Wrapper to have opportunity to load remote and Local images
     val icon: ImageVector,
     val value: String,
@@ -20,7 +21,7 @@ data class Account(
     val color: Color
 )
 
-fun mapAccountToUi(acc: com.pracel.authorizationapp.accounts.api.Account): Account = with(acc) {
+fun mapAccountToUi(acc: Account): AccountModel = with(acc) {
     val icon = when (type) {
         AccountType.CreditCard -> Icons.Filled.CreditCard
         AccountType.DebitCard -> Icons.Filled.AccountBalanceWallet
@@ -36,5 +37,5 @@ fun mapAccountToUi(acc: com.pracel.authorizationapp.accounts.api.Account): Accou
         AccountCurrency.Other -> ""
     }
 
-    return Account(icon, "$currency$value", "${type.name}($currency)", Color.Gray)
+    return AccountModel(icon, "$currency$value", "${type.name}($currency)", Color.Gray)
 }

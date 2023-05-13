@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.pracel.authorizationapp.accounts.api.di.AccountComponentProvider
 import com.pracel.authorizationapp.main.navigation.MainNavHost
 import com.pracel.authorizationapp.main.navigation.MainNavHostTab
 import com.pracel.authorizationapp.transactions.api.di.TransactionsComponentProvider
@@ -48,11 +49,14 @@ fun MainScreen() {
         val context = LocalContext.current.applicationContext
         val transactionsComponent =
             remember { (context as TransactionsComponentProvider).provideTransactionsComponent() }
+        val accountsComponent =
+            remember { (context as AccountComponentProvider).provideAccountComponent() }
 
         MainNavHost(
             modifier = Modifier.padding(bottom = it.calculateBottomPadding()),
             navHostController = navigationController,
-            transactionsApi = transactionsComponent
+            transactionsApi = transactionsComponent,
+            accountApi = accountsComponent
         )
     }
 }

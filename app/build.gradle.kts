@@ -26,6 +26,7 @@ dependencies {
     implementation(projects.feature.main.compose)
 
     implementation(projects.feature.accounts.api)
+    implementation(projects.feature.accounts.compose)
     implementation(projects.feature.accounts.impl)
 
     implementation(projects.feature.home.api)

@@ -12,7 +12,7 @@ fun TransactionsUiModule(): TransactionsUiModule {
     return object : TransactionsUiModule {
 
         @Composable
-        override fun RenderSingleTransaction(
+        override fun ComposableSingleTransaction(
             modifier: Modifier,
             transactionModel: TransactionModel
         ) = TransactionUi(modifier = modifier, transactionModel = transactionModel)

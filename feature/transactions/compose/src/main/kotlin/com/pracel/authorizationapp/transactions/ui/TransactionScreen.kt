@@ -16,7 +16,7 @@ import com.pracel.authorizationapp.transactions.model.TransactionsState
 import com.pracel.authorizationapp.transactions.viewmodel.TransactionsScreenViewModel
 
 @Composable
-internal fun TransactionsScreen() {
+fun TransactionsScreen() {
     val viewModel: TransactionsScreenViewModel = viewModel(initializer = { createViewModel() })
     val state by viewModel.stateFlow.collectAsState()
 

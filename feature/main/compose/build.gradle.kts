@@ -13,7 +13,7 @@ dependencies {
     implementation(projects.core.coreNavigation)
 
     implementation(projects.feature.home.compose)
-    implementation(projects.feature.accounts.compose)
+    implementation(projects.feature.accounts.api)
     implementation(projects.feature.transactions.api)
 
     implementation(platform(libs.compose.bom))

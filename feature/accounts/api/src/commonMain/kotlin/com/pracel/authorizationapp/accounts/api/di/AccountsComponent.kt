@@ -1,3 +1,3 @@
 package com.pracel.authorizationapp.accounts.api.di
 
-interface AccountsComponent : AccountModule
+interface AccountsComponent : AccountModule, AccountsUiModule
