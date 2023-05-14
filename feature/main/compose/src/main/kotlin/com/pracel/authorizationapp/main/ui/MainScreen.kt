@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.pracel.authorizationapp.accounts.api.di.AccountComponentProvider
+import com.pracel.authorizationapp.analytics.api.di.AnalyticsComponentProvider
 import com.pracel.authorizationapp.main.navigation.MainNavHost
 import com.pracel.authorizationapp.main.navigation.MainNavHostTab
 import com.pracel.authorizationapp.transactions.api.di.TransactionsComponentProvider
@@ -51,12 +52,15 @@ fun MainScreen() {
             remember { (context as TransactionsComponentProvider).provideTransactionsComponent() }
         val accountsComponent =
             remember { (context as AccountComponentProvider).provideAccountComponent() }
+        val analyticsApi =
+            remember { (context as AnalyticsComponentProvider).provideAnalyticsComponent() }
 
         MainNavHost(
             modifier = Modifier.padding(bottom = it.calculateBottomPadding()),
             navHostController = navigationController,
             transactionsApi = transactionsComponent,
-            accountApi = accountsComponent
+            accountApi = accountsComponent,
+            analyticsApi = analyticsApi
         )
     }
 }
@@ -66,12 +70,6 @@ private fun BottomBar(
     openedTab: MainNavHostTab?,
     onTabClicked: (MainNavHostTab) -> Unit
 ) {
-    val tabs = listOf(
-        MainNavHostTab.Home,
-        MainNavHostTab.Transactions,
-        MainNavHostTab.Accounts,
-    )
-
     Box(
         Modifier
             .background(Color.Gray)
@@ -81,7 +79,7 @@ private fun BottomBar(
                 .navigationBarsPadding()
                 .height(56.dp)
         ) {
-            tabs.forEach { tab ->
+            MainNavHostTab.values().forEach { tab ->
                 BottomNavigationItem(
                     modifier = Modifier.background(Color.Gray),
                     selected = tab == openedTab,

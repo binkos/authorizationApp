@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.pracel.authorizationapp.accounts.api.di.AccountsComponent
+import com.pracel.authorizationapp.analytics.api.di.AnalyticsComponent
 import com.pracel.authorizationapp.home.ui.HomeScreen
 import com.pracel.authorizationapp.transactions.api.di.TransactionsComponent
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navHost.ScreenNavHost
@@ -13,7 +14,8 @@ fun MainNavHost(
     modifier: Modifier,
     navHostController: NavHostController,
     transactionsApi: TransactionsComponent,
-    accountApi: AccountsComponent
+    accountApi: AccountsComponent,
+    analyticsApi: AnalyticsComponent
 ) {
     ScreenNavHost(
         modifier = modifier,
@@ -39,6 +41,9 @@ fun MainNavHost(
         screen(MainNavHostTab.Accounts.name) {
             accountApi.ComposableAccountsScreen()
         }
+        screen(MainNavHostTab.Analytics.name){
+            analyticsApi.ComposableAnalyticsScreen()
+        }
     }
 }
 
@@ -47,4 +52,5 @@ enum class MainNavHostTab {
     Home,
     Transactions,
     Accounts,
+    Analytics,
 }
