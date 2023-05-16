@@ -26,6 +26,7 @@ dependencies {
     implementation(projects.feature.main.compose)
 
     implementation(projects.feature.accounts.api)
+    implementation(projects.feature.accounts.compose)
     implementation(projects.feature.accounts.impl)
 
     implementation(projects.feature.home.api)
@@ -34,6 +35,10 @@ dependencies {
     implementation(projects.feature.transactions.api)
     implementation(projects.feature.transactions.compose)
     implementation(projects.feature.transactions.impl)
+
+    implementation(projects.feature.analytics.api)
+    implementation(projects.feature.analytics.compose)
+    implementation(projects.feature.analytics.impl)
 
     implementation(projects.shared.startDestination)
 

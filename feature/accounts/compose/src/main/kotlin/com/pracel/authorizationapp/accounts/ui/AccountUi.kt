@@ -1,4 +1,4 @@
-package com.pracel.authorizationapp.home.ui
+package com.pracel.authorizationapp.accounts.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -20,11 +20,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.pracel.authorizationapp.home.model.Account
+import com.pracel.authorizationapp.accounts.api.model.AccountModel
 import com.uladzislau_pravalenak.authorization.core.ui.theme.AuthorizationAppTheme
 
 @Composable
-internal fun AccountUi(modifier: Modifier = Modifier, account: Account) {
+internal fun AccountUi(modifier: Modifier = Modifier, account: AccountModel) {
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(8.dp)
@@ -63,7 +63,7 @@ fun AccountUiPreview() {
     AuthorizationAppTheme {
         Surface {
             AccountUi(
-                account = Account(Icons.Filled.CreditCard, "$35 000", "Cash($)", Color.Gray)
+                account = AccountModel(Icons.Filled.CreditCard, "$35 000", "Cash($)", Color.Gray)
             )
         }
     }

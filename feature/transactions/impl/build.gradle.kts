@@ -10,7 +10,7 @@ android {
 
 kotlin {
     sourceSets {
-        androidMain{
+        androidMain {
             dependencies {
                 implementation(projects.feature.transactions.compose)
 

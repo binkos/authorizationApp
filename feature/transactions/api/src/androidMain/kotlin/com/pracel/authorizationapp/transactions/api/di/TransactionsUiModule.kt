@@ -7,7 +7,7 @@ import com.pracel.authorizationapp.transactions.api.model.TransactionModel
 actual interface TransactionsUiModule {
 
     @Composable
-    fun RenderSingleTransaction(modifier: Modifier, transactionModel: TransactionModel)
+    fun ComposableSingleTransaction(modifier: Modifier, transactionModel: TransactionModel)
 
     @Composable
     fun ComposableTransactionScreen()

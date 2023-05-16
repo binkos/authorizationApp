@@ -11,6 +11,7 @@ dependencies {
     implementation(projects.core.core)
     implementation(projects.core.coreUi)
     implementation(projects.core.coreNavigation)
+    implementation(projects.feature.accounts.api)
 
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.foundation)

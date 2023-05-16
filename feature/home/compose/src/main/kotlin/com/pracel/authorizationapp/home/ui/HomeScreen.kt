@@ -12,36 +12,37 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.pracel.authorizationapp.accounts.api.di.AccountComponentProvider
+import com.pracel.authorizationapp.accounts.api.di.AccountsComponent
+import com.pracel.authorizationapp.accounts.api.model.AccountModel
 import com.pracel.authorizationapp.home.api.di.HomeComponentProvider
 import com.pracel.authorizationapp.home.model.HomeState
 import com.pracel.authorizationapp.home.viewmodel.HomeViewModel
 import com.pracel.authorizationapp.transactions.api.di.TransactionsComponent
+import com.pracel.authorizationapp.transactions.api.di.TransactionsComponentProvider
 import com.pracel.authorizationapp.transactions.api.model.TransactionModel
 
 @Composable
 fun HomeScreen(
-    transactionsComponent: TransactionsComponent
+    accountUi: @Composable (AccountModel) -> Unit,
+    transactionUi: @Composable (TransactionModel) -> Unit,
 ) {
     val viewModel: HomeViewModel =
-        viewModel(initializer = { createViewModel(transactionsComponent) })
+        //TODO write own wrapper to use ::createViewModel
+        viewModel(initializer = { createViewModel() })
 
     val state by viewModel.stateFlow.collectAsState()
-    HomeScreenUi(state) { model ->
-        transactionsComponent.RenderSingleTransaction(
-            modifier = Modifier,
-            transactionModel = model
-        )
-    }
+    HomeScreenUi(state, transactionUi, accountUi)
 }
 
 @Composable
 private fun HomeScreenUi(
     state: HomeState,
-    transactionsUi: @Composable (transaction: TransactionModel) -> Unit
+    transactionsUi: @Composable (transaction: TransactionModel) -> Unit,
+    accountUi: @Composable (AccountModel) -> Unit
 ) {
     Column(Modifier.fillMaxSize()) {
         AppBar()
-        MyAccounts(Modifier.fillMaxWidth(), state.accounts)
+        MyAccounts(Modifier.fillMaxWidth(), accounts = state.accounts, accountUi = accountUi)
         LastTransactions(
             transactions = state.transactions,
             transactionsUi = transactionsUi
@@ -49,10 +50,11 @@ private fun HomeScreenUi(
     }
 }
 
-private fun CreationExtras.createViewModel(
-    transactionsComponent: TransactionsComponent
-): HomeViewModel {
+private fun CreationExtras.createViewModel(): HomeViewModel {
     val context = checkNotNull(this[APPLICATION_KEY])
+    val transactionsComponent =
+        context.getProvider<TransactionsComponentProvider>().provideTransactionsComponent()
+
     val accountsComponent =
         context.getProvider<AccountComponentProvider>().provideAccountComponent()
 
