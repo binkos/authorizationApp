@@ -10,10 +10,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.pracel.authorizationapp.transactions.api.di.TransactionsComponent
 import com.pracel.authorizationapp.transactions.api.di.TransactionsComponentProvider
 import com.pracel.authorizationapp.transactions.model.TransactionsState
 import com.pracel.authorizationapp.transactions.viewmodel.TransactionsScreenViewModel
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.ui.Modifier
 
 @Composable
 fun TransactionsScreen() {
@@ -28,6 +30,9 @@ internal fun TransactionsScreenUi(state: TransactionsState) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         items(state.transactions) {
             TransactionUi(transactionModel = it)
+        }
+        item {
+            Spacer(Modifier.height(18.dp))
         }
     }
 }
