@@ -1,0 +1,3 @@
+package com.pracel.authorizationapp.transaction.details.api.di
+
+interface TransactionDetailsComponent : TransactionDetailsUiModule

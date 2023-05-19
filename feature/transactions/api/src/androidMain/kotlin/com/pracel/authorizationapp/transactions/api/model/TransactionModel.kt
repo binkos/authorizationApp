@@ -13,15 +13,16 @@ import androidx.compose.ui.graphics.vector.ImageVector
 // may be it is good idea to share it by DI as
 @Immutable
 data class TransactionModel(
+    val id: Int,
     val icon: ImageVector = Icons.Default.Face,
     val category: String = "",
     val source: String = "",
-    val value: String = ""
+    val value: String = "",
 )
 
-fun mapTransactionToUi(transaction: Transaction): TransactionModel = with(transaction){
+fun mapTransactionToUi(transaction: Transaction): TransactionModel = with(transaction) {
     val value = buildString {
-        val sign = when (type){
+        val sign = when (type) {
             TransactionType.Income -> '+'
             TransactionType.Outcome -> '-'
         }
@@ -31,6 +32,7 @@ fun mapTransactionToUi(transaction: Transaction): TransactionModel = with(transa
     }
 
     TransactionModel(
+        id = id,
         category = category,
         source = source,
         value = value

@@ -11,7 +11,10 @@ android {
 kotlin {
     sourceSets {
         commonMain {
-            dependencies { implementation(projects.feature.transactions.api) }
+            dependencies {
+                implementation(libs.coroutines.core)
+                implementation(projects.feature.transactions.api)
+            }
         }
     }
 }

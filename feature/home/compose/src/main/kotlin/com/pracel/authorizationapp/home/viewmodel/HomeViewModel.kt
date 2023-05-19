@@ -10,23 +10,30 @@ import com.pracel.authorizationapp.home.model.HomeState
 import com.pracel.authorizationapp.transactions.api.model.mapTransactionToUi
 import com.pracel.mvi.MVIViewModel
 import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.take
 
 class HomeViewModel(
     private val accountsRepository: AccountsRepository,
-    private val lastTransactionsUseCase: LastTransactionsUseCase
+    lastTransactionsUseCase: LastTransactionsUseCase
 ) : MVIViewModel<HomeState, HomeAction, HomeEvent>(HomeState()) {
 
     init {
-        viewModelScope.launch {
-            val accounts = async { accountsRepository.getAccounts().map(::mapAccountToUi) }
-            val transactions =
-                async { lastTransactionsUseCase.getLastTransactions().map(::mapTransactionToUi) }
+        val accounts =
+            viewModelScope.async { accountsRepository.getAccounts().map(::mapAccountToUi) }
 
-            val newState =
-                state.copy(accounts = accounts.await(), transactions = transactions.await())
-            updateState { newState }
-        }
+        lastTransactionsUseCase
+            .getLastTransactions()
+            .map { transitions -> transitions.map(::mapTransactionToUi) }
+            .onEach {
+                val newState = state.copy(accounts = accounts.await(), transactions = it)
+                updateState { newState }
+            }
+            .launchIn(viewModelScope)
     }
 
     override fun handleEvents(event: HomeEvent) {
@@ -34,6 +41,4 @@ class HomeViewModel(
 //            else -> {}
 //        }
     }
-
-//    val state: MutableStateFlow<String>
 }

@@ -30,9 +30,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Alignment
+import com.pracel.authorizationapp.main.navigation.MainFlowNavHostDestinations
+import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.LocalNavigator
+import com.uladzislau_pravalenk.authorizationapp.core.extensions.currentOrThrow
 
 @Composable
 fun MainScreen() {
+    val navigator = LocalNavigator.currentOrThrow
     val navigationController = rememberNavController()
     val navBackStackEntry by navigationController.currentBackStackEntryAsState()
     val currentTab = navBackStackEntry?.destination?.route?.let { MainNavHostTab.valueOf(it) }
@@ -73,7 +77,9 @@ fun MainScreen() {
             openedTab = currentTab,
             onTabClicked = onNavigate,
             backgroundColor = Color.Gray
-        )
+        ) {
+            navigator.navigate(MainFlowNavHostDestinations.TransactionDetails.name)
+        }
     }
 }
 
@@ -83,6 +89,7 @@ private fun BottomBar(
     openedTab: MainNavHostTab?,
     onTabClicked: (MainNavHostTab) -> Unit,
     backgroundColor: Color,
+    onButtonClicked: () -> Unit
 ) {
 
     // TODO: Change wrapping of BOX for setting color of navigation bar to approach with systemUi
@@ -119,7 +126,7 @@ private fun BottomBar(
 
         FloatingActionButton(
             modifier = Modifier.align(Alignment.TopCenter),
-            onClick = { },
+            onClick = onButtonClicked,
             backgroundColor = Color.Cyan
         ) {
             Icon(

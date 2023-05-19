@@ -6,7 +6,6 @@ import com.pracel.authorizationapp.transactions.impl.repository.TransactionsRepo
 
 fun TransactionsModule(dependencies: TransactionsComponentDependencies): TransactionsModule {
     return object : TransactionsModule {
-        override val repository: TransactionsRepository
-            get() = TransactionsRepositoryImpl(dependencies.dispatchers)
+        override val repository: TransactionsRepository = TransactionsRepositoryImpl(dependencies.dispatchers)
     }
 }

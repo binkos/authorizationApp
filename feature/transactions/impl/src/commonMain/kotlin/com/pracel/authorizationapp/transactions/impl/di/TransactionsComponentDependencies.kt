@@ -8,6 +8,5 @@ interface TransactionsComponentDependencies {
 
 fun TransactionsComponentDependencies(dispatchers: Dispatchers): TransactionsComponentDependencies =
     object : TransactionsComponentDependencies {
-        override val dispatchers: Dispatchers
-            get() = dispatchers
+        override val dispatchers: Dispatchers = dispatchers
     }

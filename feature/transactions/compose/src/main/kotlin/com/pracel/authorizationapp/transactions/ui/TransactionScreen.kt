@@ -28,7 +28,7 @@ fun TransactionsScreen() {
 @Composable
 internal fun TransactionsScreenUi(state: TransactionsState) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        items(state.transactions) {
+        items(state.transactions, key = { it.id }) {
             TransactionUi(transactionModel = it)
         }
         item {

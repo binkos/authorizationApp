@@ -2,9 +2,13 @@ package com.uladzislau_pravalenak.authorizationapp.navhost
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.pracel.authorizationapp.main.navigation.MainFlowNavScreen
+import com.pracel.authorizationapp.transaction.details.api.di.TransactionDetailsComponent
+import com.pracel.authorizationapp.transaction.details.api.di.TransactionDetailsComponentProvider
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navBuilder.NavBuilder
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navHost.ScreenNavHost
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.LocalNavigator

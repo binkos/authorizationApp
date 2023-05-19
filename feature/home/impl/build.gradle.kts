@@ -14,6 +14,7 @@ kotlin {
             dependencies {
                 implementation(projects.feature.home.api)
                 implementation(projects.feature.transactions.api)
+                implementation(libs.coroutines.core)
             }
         }
     }

@@ -40,6 +40,10 @@ dependencies {
     implementation(projects.feature.analytics.compose)
     implementation(projects.feature.analytics.impl)
 
+    implementation(projects.feature.transactionDetails.api)
+    implementation(projects.feature.transactionDetails.compose)
+    implementation(projects.feature.transactionDetails.impl)
+
     implementation(projects.shared.startDestination)
 
     implementation(libs.compose.navigation)
