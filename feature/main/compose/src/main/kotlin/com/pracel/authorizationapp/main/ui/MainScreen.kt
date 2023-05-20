@@ -30,57 +30,60 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Alignment
+import com.pracel.authorizationapp.home.ui.TemporaryHomeScreen
 import com.pracel.authorizationapp.main.navigation.MainFlowNavHostDestinations
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.LocalNavigator
 import com.uladzislau_pravalenk.authorizationapp.core.extensions.currentOrThrow
 
 @Composable
 fun MainScreen() {
-    val navigator = LocalNavigator.currentOrThrow
-    val navigationController = rememberNavController()
-    val navBackStackEntry by navigationController.currentBackStackEntryAsState()
-    val currentTab = navBackStackEntry?.destination?.route?.let { MainNavHostTab.valueOf(it) }
+//    val navigator = LocalNavigator.currentOrThrow
+//    val navigationController = rememberNavController()
+//    val navBackStackEntry by navigationController.currentBackStackEntryAsState()
+//    val currentTab = navBackStackEntry?.destination?.route?.let { MainNavHostTab.valueOf(it) }
 
-    val onNavigate: (MainNavHostTab) -> Unit = remember {
-        { tab ->
-            navigationController.navigate(tab.name) {
-                navigationController.graph.startDestinationRoute?.let { route ->
-                    popUpTo(route) { saveState = true }
-                }
-                launchSingleTop = true
-                restoreState = true
-            }
-        }
-    }
+//    val onNavigate: (MainNavHostTab) -> Unit = remember {
+//        { tab ->
+//            navigationController.navigate(tab.name) {
+//                navigationController.graph.startDestinationRoute?.let { route ->
+//                    popUpTo(route) { saveState = true }
+//                }
+//                launchSingleTop = true
+//                restoreState = true
+//            }
+//        }
+//    }
 
-    Box {
-        val context = LocalContext.current.applicationContext
-        val transactionsComponent =
-            remember { (context as TransactionsComponentProvider).provideTransactionsComponent() }
-        val accountsComponent =
-            remember { (context as AccountComponentProvider).provideAccountComponent() }
-        val analyticsApi =
-            remember { (context as AnalyticsComponentProvider).provideAnalyticsComponent() }
+    TemporaryHomeScreen()
 
-        MainNavHost(
-            modifier = Modifier
-                .fillMaxSize()
-                .navigationBarsPadding()
-                .padding(bottom = 56.dp),
-            navHostController = navigationController,
-            transactionsApi = transactionsComponent,
-            accountApi = accountsComponent,
-            analyticsApi = analyticsApi
-        )
-        BottomBar(
-            modifier = Modifier.align(Alignment.BottomCenter),
-            openedTab = currentTab,
-            onTabClicked = onNavigate,
-            backgroundColor = Color.Gray
-        ) {
-            navigator.navigate(MainFlowNavHostDestinations.TransactionDetails.name)
-        }
-    }
+//    Box {
+//        val context = LocalContext.current.applicationContext
+//        val transactionsComponent =
+//            remember { (context as TransactionsComponentProvider).provideTransactionsComponent() }
+//        val accountsComponent =
+//            remember { (context as AccountComponentProvider).provideAccountComponent() }
+//        val analyticsApi =
+//            remember { (context as AnalyticsComponentProvider).provideAnalyticsComponent() }
+//
+//        MainNavHost(
+//            modifier = Modifier
+//                .fillMaxSize()
+//                .navigationBarsPadding()
+//                .padding(bottom = 56.dp),
+//            navHostController = navigationController,
+//            transactionsApi = transactionsComponent,
+//            accountApi = accountsComponent,
+//            analyticsApi = analyticsApi
+//        )
+//        BottomBar(
+//            modifier = Modifier.align(Alignment.BottomCenter),
+//            openedTab = currentTab,
+//            onTabClicked = onNavigate,
+//            backgroundColor = Color.Gray
+//        ) {
+//            navigator.navigate(MainFlowNavHostDestinations.TransactionDetails.name)
+//        }
+//    }
 }
 
 @Composable

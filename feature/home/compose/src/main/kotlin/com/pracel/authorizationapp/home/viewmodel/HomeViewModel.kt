@@ -18,19 +18,19 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.take
 
 class HomeViewModel(
-    private val accountsRepository: AccountsRepository,
+//    private val accountsRepository: AccountsRepository,
     lastTransactionsUseCase: LastTransactionsUseCase
 ) : MVIViewModel<HomeState, HomeAction, HomeEvent>(HomeState()) {
 
     init {
-        val accounts =
-            viewModelScope.async { accountsRepository.getAccounts().map(::mapAccountToUi) }
+//        val accounts =
+//            viewModelScope.async { accountsRepository.getAccounts().map(::mapAccountToUi) }
 
         lastTransactionsUseCase
             .getLastTransactions()
             .map { transitions -> transitions.map(::mapTransactionToUi) }
             .onEach {
-                val newState = state.copy(accounts = accounts.await(), transactions = it)
+                val newState = state.copy(accounts = emptyList(), transactions = it)
                 updateState { newState }
             }
             .launchIn(viewModelScope)

@@ -10,22 +10,22 @@ import com.uladzislau_pravalenak.authorizationapp.core.navigation.navHost.Screen
 
 @Composable
 fun MainFlowNavScreen() {
-    val appContext = LocalContext.current.applicationContext
-    val transactionDetailsApi = remember {
-        (appContext as TransactionDetailsComponentProvider).provideTransactionDetailsComponent()
-    }
+//    val appContext = LocalContext.current.applicationContext
+//    val transactionDetailsApi = remember {
+//        (appContext as TransactionDetailsComponentProvider).provideTransactionDetailsComponent()
+//    }
 
     ScreenNavHost(startDestination = MainFlowNavHostDestinations.Main.name) {
         screen(MainFlowNavHostDestinations.Main.name) {
             MainScreen()
         }
-        screen(MainFlowNavHostDestinations.Settings.name) {
-
-        }
-
-        screen(MainFlowNavHostDestinations.TransactionDetails.name) {
-            transactionDetailsApi.ComposableTransactionDetails()
-        }
+//        screen(MainFlowNavHostDestinations.Settings.name) {
+//
+//        }
+//
+//        screen(MainFlowNavHostDestinations.TransactionDetails.name) {
+//            transactionDetailsApi.ComposableTransactionDetails()
+//        }
     }
 }
 

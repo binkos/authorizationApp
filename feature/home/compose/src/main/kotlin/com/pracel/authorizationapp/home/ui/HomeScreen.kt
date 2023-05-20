@@ -65,7 +65,7 @@ private fun CreationExtras.createViewModel(): HomeViewModel {
     val accountRepository = accountsComponent.repository
     val lastTransactionsUseCase = homeComponent.lastTransactionsUseCase
 
-    return HomeViewModel(accountRepository, lastTransactionsUseCase)
+    return HomeViewModel(/*accountRepository,*/ lastTransactionsUseCase)
 }
 
 fun <T> Context.getProvider(): T = this as T

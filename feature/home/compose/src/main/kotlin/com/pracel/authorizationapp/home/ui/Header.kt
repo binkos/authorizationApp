@@ -22,9 +22,7 @@ fun Header(
     modifier: Modifier = Modifier,
 ) {
     Row(
-        modifier = modifier
-            .height(36.dp)
-            .padding(horizontal = 16.dp),
+        modifier = modifier.height(36.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(text = stringResource(textId), fontSize = 18.sp)

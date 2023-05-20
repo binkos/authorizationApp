@@ -16,6 +16,7 @@ import com.uladzislau_pravalenak.authorizationapp.coreui.R
 import com.uladzislau_pravalenak.authorizationapp.splash.presentation.SplashScreenViewModel
 import com.uladzislau_pravalenk.authorizationapp.core.extensions.currentOrThrow
 import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
+import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen() {
@@ -24,13 +25,7 @@ fun SplashScreen() {
     val viewModel: SplashScreenViewModel = hiltViewModel()
 
     LaunchedEffect(key1 = Unit) {
-        viewModel.destinationSharedFlow.collect { destination ->
-            navigator.navigate(destination) {
-                popUpTo(AppFlowRoutes.SPLASH.name) {
-                    inclusive = true
-                }
-            }
-        }
+        delay(1000)
     }
 
     SplashScreenUI()

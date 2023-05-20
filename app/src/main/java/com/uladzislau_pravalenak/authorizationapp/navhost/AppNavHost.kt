@@ -20,17 +20,17 @@ import com.uladzislau_pravalenk.authorizationapp.core.extensions.currentOrThrow
 import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
 
 @Composable
-fun AppNavHost(modifier: Modifier) {
+fun AppNavHost(modifier: Modifier = Modifier) {
     ScreenNavHost(
         modifier = modifier,
-        startDestination = AppFlowRoutes.SPLASH.name
+        startDestination = AppFlowRoutes.MAIN_FLOW.name
     ) { navController ->
-        screen(AppFlowRoutes.SPLASH.name) { SplashScreen() }
-        screen(AppFlowRoutes.ONBOARDING.name) { OnboardingScreen() }
-        screen(AppFlowRoutes.SIGN_IN.name) {
-            SignInScreen()
-        }
-        configureSignUpScreen(navController)
+//        screen(AppFlowRoutes.SPLASH.name) { SplashScreen() }
+//        screen(AppFlowRoutes.ONBOARDING.name) { OnboardingScreen() }
+//        screen(AppFlowRoutes.SIGN_IN.name) {
+//            SignInScreen()
+//        }
+//        configureSignUpScreen(navController)
 
         screen(AppFlowRoutes.MAIN_FLOW.name) {
             MainFlowNavScreen()
@@ -38,21 +38,21 @@ fun AppNavHost(modifier: Modifier) {
     }
 }
 
-private fun NavBuilder.Default.configureSignUpScreen(navController: NavController) {
-    screen(AppFlowRoutes.SIGN_UP.name) {
-        val navigator = LocalNavigator.currentOrThrow
-
-        val onNavigate: () -> Unit = {
-            if (navController.backQueue.size == 2) {
-                navigator.navigate(AppFlowRoutes.SIGN_IN.name) {
-                    popUpTo(AppFlowRoutes.SIGN_UP.name) { inclusive = true }
-                }
-            } else {
-                navigator.popBackStack()
-            }
-        }
-        BackHandler(onBack = onNavigate)
-
-        SignUpScreen { onNavigate() }
-    }
-}
+//private fun NavBuilder.Default.configureSignUpScreen(navController: NavController) {
+//    screen(AppFlowRoutes.SIGN_UP.name) {
+//        val navigator = LocalNavigator.currentOrThrow
+//
+//        val onNavigate: () -> Unit = {
+//            if (navController.backQueue.size == 2) {
+//                navigator.navigate(AppFlowRoutes.SIGN_IN.name) {
+//                    popUpTo(AppFlowRoutes.SIGN_UP.name) { inclusive = true }
+//                }
+//            } else {
+//                navigator.popBackStack()
+//            }
+//        }
+//        BackHandler(onBack = onNavigate)
+//
+//        SignUpScreen { onNavigate() }
+//    }
+//}

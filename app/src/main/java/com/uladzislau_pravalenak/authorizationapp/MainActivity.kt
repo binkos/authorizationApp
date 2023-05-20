@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AuthorizationAppTheme {
                 Surface {
-                    AppNavHost(modifier = Modifier.statusBarsPadding())
+                    AppNavHost(/*modifier = Modifier.statusBarsPadding()*/)
                 }
             }
         }

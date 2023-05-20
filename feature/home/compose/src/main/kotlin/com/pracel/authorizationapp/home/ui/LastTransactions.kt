@@ -40,7 +40,6 @@ private fun TransactionsBlock(
 ) {
     Column(
         modifier = modifier
-            .padding(horizontal = 16.dp)
             .border(BorderStroke(1.dp, Color.LightGray), RoundedCornerShape(8.dp)),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
