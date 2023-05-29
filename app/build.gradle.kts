@@ -44,6 +44,10 @@ dependencies {
     implementation(projects.feature.transactionDetails.compose)
     implementation(projects.feature.transactionDetails.impl)
 
+    implementation(projects.feature.createTransaction.api)
+    implementation(projects.feature.createTransaction.compose)
+    implementation(projects.feature.createTransaction.impl)
+
     implementation(projects.shared.startDestination)
 
     implementation(libs.compose.navigation)

@@ -16,6 +16,7 @@ dependencies {
     implementation(projects.feature.accounts.api)
     implementation(projects.feature.transactions.api)
     implementation(projects.feature.home.api)
+    implementation(projects.feature.createTransaction.api)
 
     implementation(projects.library.mvi)
 

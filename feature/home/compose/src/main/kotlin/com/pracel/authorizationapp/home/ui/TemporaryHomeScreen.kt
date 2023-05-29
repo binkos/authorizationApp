@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -23,7 +24,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -33,35 +36,48 @@ import com.pracel.authorizationapp.home.viewmodel.HomeViewModel
 import com.pracel.authorizationapp.transactions.api.di.TransactionsComponent
 import com.pracel.authorizationapp.transactions.api.di.TransactionsComponentProvider
 import com.pracel.authorizationapp.transactions.api.model.TransactionModel
+import com.uladzislau_pravalenak.authorization.core.ui.theme.AuthorizationAppTheme
+import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.LocalNavigator
+import com.uladzislau_pravalenk.authorizationapp.core.extensions.currentOrThrow
+import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
 
 @Composable
 fun TemporaryHomeScreen() {
+    val navigator = LocalNavigator.currentOrThrow
     val context = LocalContext.current
     val transactionsApi = remember {
         context.applicationContext
             .getProvider<TransactionsComponentProvider>().provideTransactionsComponent()
     }
+//    val newTransactionApi = remember {
+//        context.applicationContext
+//            .getProvider<NewTransactionComponentProvider>().provideNewTransactionComponent()
+//    }
+
     val viewModel: HomeViewModel =
         //TODO write own wrapper to use ::createViewModel
         viewModel(initializer = { createViewModel(transactionsApi) })
 
     val state by viewModel.stateFlow.collectAsState()
 
-    TemporaryHomeScreenUi(state = state) { model ->
-        transactionsApi.ComposableSingleTransaction(Modifier, model)
-    }
+    TemporaryHomeScreenUi(
+        state = state,
+        transactionUi = { model -> transactionsApi.ComposableSingleTransaction(Modifier, model) },
+        onAddButtonClicked = { navigator.navigate(AppFlowRoutes.CREATE_TRANSACTION.name) }
+    )
 }
 
 @Composable
 private fun TemporaryHomeScreenUi(
     state: HomeState,
-    transactionUi: @Composable (TransactionModel) -> Unit
+    transactionUi: @Composable (TransactionModel) -> Unit,
+    onAddButtonClicked: () -> Unit
 ) {
     Column(
         Modifier
             .systemBarsPadding()
             .fillMaxSize()
-            .padding(start = 16.dp, end = 16.dp, bottom = 8.dp, top = 8.dp),
+            .padding(start = 16.dp, end = 16.dp, bottom = 4.dp, top = 8.dp),
     ) {
         MyBudget("0,00$")
         Spacer(modifier = Modifier.height(8.dp))
@@ -76,9 +92,12 @@ private fun TemporaryHomeScreenUi(
         }
         Spacer(modifier = Modifier.weight(1f))
 
-        NewTransactionButton(modifier = Modifier.fillMaxWidth()) {
-
-        }
+        AddTransactionButton(
+            modifier = Modifier
+                .height(48.dp)
+                .fillMaxWidth(),
+            onClick = onAddButtonClicked
+        )
     }
 }
 
@@ -134,15 +153,19 @@ private fun MonthlyIncomes(
 }
 
 @Composable
-private fun NewTransactionButton(
+private fun AddTransactionButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
     Button(
         modifier = modifier,
-        onClick = onClick
+        onClick = onClick,
+        shape = RoundedCornerShape(16.dp)
     ) {
-        Text(text = "Add Transaction")
+        Text(
+            text = "Add Transaction",
+            fontSize = 18.sp
+        )
     }
 }
 
@@ -162,12 +185,12 @@ private fun CreationExtras.createViewModel(transactionApi: TransactionsComponent
     return HomeViewModel(/*accountRepository,*/ lastTransactionsUseCase)
 }
 
-//@Preview
-//@Composable
-//fun TemporaryMainScreenPreview() {
-//    AuthorizationAppTheme {
-//        Surface {
-//            TemporaryHomeScreenUi(HomeState())
-//        }
-//    }
-//}
+@Preview
+@Composable
+fun TemporaryMainScreenPreview() {
+    AuthorizationAppTheme {
+        Surface {
+            TemporaryHomeScreenUi(HomeState(), {}) {}
+        }
+    }
+}

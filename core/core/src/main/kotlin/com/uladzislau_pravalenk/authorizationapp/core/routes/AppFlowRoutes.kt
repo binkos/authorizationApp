@@ -6,4 +6,5 @@ enum class AppFlowRoutes {
     SIGN_IN,
     SIGN_UP,
     MAIN_FLOW,
+    CREATE_TRANSACTION,
 }

@@ -8,7 +8,6 @@ import com.pracel.authorizationapp.transactions.api.model.NewTransaction
 import com.pracel.authorizationapp.transactions.api.model.TransactionType
 import com.pracel.authorizationapp.transactions.api.repository.TransactionsRepository
 import com.pracel.mvi.MVIViewModel
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 internal class TransactionDetailsViewModel(

@@ -1,30 +1,25 @@
 package com.uladzislau_pravalenak.authorizationapp.navhost
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.NavController
 import com.pracel.authorizationapp.main.navigation.MainFlowNavScreen
-import com.pracel.authorizationapp.transaction.details.api.di.TransactionDetailsComponent
-import com.pracel.authorizationapp.transaction.details.api.di.TransactionDetailsComponentProvider
-import com.uladzislau_pravalenak.authorizationapp.core.navigation.navBuilder.NavBuilder
+import com.pracel.authorizationapp.main.ui.MainScreen
+import com.pracel.authorizationapp.newTransaction.api.di.NewTransactionComponentProvider
 import com.uladzislau_pravalenak.authorizationapp.core.navigation.navHost.ScreenNavHost
-import com.uladzislau_pravalenak.authorizationapp.core.navigation.navigator.LocalNavigator
-import com.uladzislau_pravalenak.authorizationapp.onboarding.OnboardingScreen
-import com.uladzislau_pravalenak.authorizationapp.signIn.presentation.ui.SignInScreen
-import com.uladzislau_pravalenak.authorizationapp.signUp.presentation.ui.SignUpScreen
-import com.uladzislau_pravalenak.authorizationapp.splash.presentation.ui.SplashScreen
-import com.uladzislau_pravalenk.authorizationapp.core.extensions.currentOrThrow
 import com.uladzislau_pravalenk.authorizationapp.core.routes.AppFlowRoutes
 
 @Composable
 fun AppNavHost(modifier: Modifier = Modifier) {
+    val appContext = LocalContext.current.applicationContext
+    val transactionDetailsApi = remember {
+        (appContext as NewTransactionComponentProvider).provideNewTransactionComponent()
+    }
     ScreenNavHost(
         modifier = modifier,
         startDestination = AppFlowRoutes.MAIN_FLOW.name
-    ) { navController ->
+    ) {
 //        screen(AppFlowRoutes.SPLASH.name) { SplashScreen() }
 //        screen(AppFlowRoutes.ONBOARDING.name) { OnboardingScreen() }
 //        screen(AppFlowRoutes.SIGN_IN.name) {
@@ -33,7 +28,12 @@ fun AppNavHost(modifier: Modifier = Modifier) {
 //        configureSignUpScreen(navController)
 
         screen(AppFlowRoutes.MAIN_FLOW.name) {
-            MainFlowNavScreen()
+//            MainFlowNavScreen()
+            MainScreen()
+        }
+
+        screen(AppFlowRoutes.CREATE_TRANSACTION.name) {
+            transactionDetailsApi.ComposableNewTransactionScreen()
         }
     }
 }

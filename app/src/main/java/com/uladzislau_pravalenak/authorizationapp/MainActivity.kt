@@ -6,8 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import com.pracel.authorizationapp.accounts.api.di.AccountComponentProvider
 import com.uladzislau_pravalenak.authorization.core.ui.theme.AuthorizationAppTheme
 import com.uladzislau_pravalenak.authorizationapp.navhost.AppNavHost
 import dagger.hilt.android.AndroidEntryPoint

@@ -43,6 +43,10 @@ include(":feature:transaction-details:api")
 include(":feature:transaction-details:impl")
 include(":feature:transaction-details:compose")
 
+include(":feature:create-transaction:api")
+include(":feature:create-transaction:impl")
+include(":feature:create-transaction:compose")
+
 include(":feature:analytics:api")
 include(":feature:analytics:impl")
 include(":feature:analytics:compose")

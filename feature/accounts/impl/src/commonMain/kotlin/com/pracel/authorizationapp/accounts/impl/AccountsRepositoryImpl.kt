@@ -7,7 +7,7 @@ import com.pracel.authorizationapp.accounts.api.AccountsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class AccountsRepositoryImpl(
+internal class AccountsRepositoryImpl(
     private val dispatchers: Dispatchers
 ) : AccountsRepository {
 

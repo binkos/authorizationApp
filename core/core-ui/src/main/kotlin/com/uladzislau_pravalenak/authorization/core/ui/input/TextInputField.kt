@@ -45,7 +45,7 @@ fun TextInputField(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default
 ) {
-    var focusedDirty by rememberSaveable {mutableStateOf(false) }
+    var focusedDirty by rememberSaveable { mutableStateOf(false) }
     val borderColor: Color = if (errorText.isEmpty()) Color.White else MaterialTheme.colors.error
 
     Column(modifier = modifier.fillMaxWidth()) {

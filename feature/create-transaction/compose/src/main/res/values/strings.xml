@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="amount">Amount</string>
+    <string name="transaction_name">Transaction name</string>
+    <string name="source">Source</string>
+    <string name="create_transaction">Create Transaction</string>
+</resources>

@@ -1,6 +1,6 @@
 plugins {
 //    id("android-compose-setup")
-    id("multiplatform-android-setup")
+    id("multiplatform-compose-setup")
 
 }
 
